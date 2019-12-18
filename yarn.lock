@@ -2817,6 +2817,13 @@ common-tags@1.8.0:
   resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.8.0.tgz#8e3153e542d4a39e9b10554434afaaf98956a937"
   integrity sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
 
+common-types@^1.12.15:
+  version "1.12.15"
+  resolved "https://registry.yarnpkg.com/common-types/-/common-types-1.12.15.tgz#28cf2b087c1c3e6cc47d14c92afec40a2901853a"
+  integrity sha512-5ZiPqSc3iNBaRtSbFDEeodpXIsjyGNyJBAHuh36IqKB+/DY9RjZYTAAjrS1I2LaiJrJADmn4HawoPssvR6jFPA==
+  dependencies:
+    "@types/json-schema" "^7.0.3"
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"

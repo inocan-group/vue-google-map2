@@ -1,0 +1,7 @@
+html, body, #root, .v-application, .v-application--wrap, .v-application--wrap > .container {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}

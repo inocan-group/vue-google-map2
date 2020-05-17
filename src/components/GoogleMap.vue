@@ -67,6 +67,7 @@ export interface IGoogleMapConfig {
   }
 })
 export default class GoogleMap extends Vue {
+  @Prop() apiKey!: string
   @Prop() loadingStrategy?: "now" | "wait";
   @Prop() mapConfig!: any;
   @Prop() connection?: GoogleMapConnection;
@@ -323,10 +324,7 @@ export default class GoogleMap extends Vue {
   }
 
   async mounted() {
-    this._api = await loadNow(
-      "places",
-      "AIzaSyD-AQKOVKFqVWF98qnYMvpFNH_u_ZrUOQk"
-    );
+    this._api = await loadNow("places", this.apiKey);
     await this.draw();
     this.$emit("google-maps-ready");
     this.ready = true;

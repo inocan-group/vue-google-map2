@@ -1,0 +1,6 @@
+export { default as GoogleMap } from './components/GoogleMap.vue'
+export { default as GoogleMapMarker } from './components/Shapes/GoogleMapMarker.vue'
+export { default as GoogleMapInfoWindow } from './components/Shapes/GoogleMapInfoWindow.vue'
+export { default as GoogleMapLine } from './components/Shapes/GoogleMapLine.vue'
+export { default as GoogleMapPolygon } from './components/Shapes/GoogleMapPolygon.vue'
+export { default as GoogleMapRectangle } from './components/Shapes/GoogleMapRectangle.vue'

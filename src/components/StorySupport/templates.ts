@@ -1,4 +1,4 @@
-import { withWrapperKnobs } from '../../../../utils/WrapperKnobs'
+import { withWrapperKnobs } from '@/utils/WrapperKnobs'
 
 const dynamicProps = `
   :center="center"

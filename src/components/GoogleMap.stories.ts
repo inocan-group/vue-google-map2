@@ -3,13 +3,12 @@ import { text, boolean, withKnobs, select, number } from '@storybook/addon-knobs
 import GoogleMap from '../GoogleMaps/GoogleMap.vue'
 import GoogleMapMarker from '../GoogleMaps/Shapes/GoogleMapMarker.vue'
 import StoryRouter from 'storybook-vue-router'
-import StoryWrapper from '../../../utils/StoryWrapper.vue'
-import { withWrapperKnobs } from '../../../utils/WrapperKnobs'
-import { IDictionary } from 'firemock'
+import StoryWrapper from '@/utils/StoryWrapper.vue'
+import { withWrapperKnobs } from '@/utils/WrapperKnobs'
+import { IDictionary } from 'common-types'
 import MapExpand from './customcontrols/MapExpand.vue'
 import { mapProps, basicTemplate, templateMarkerBasics, markerBasicsKnobs } from './StorySupport/index'
 import markdown from './notes.md'
-import { UserRoles } from '@/index'
 
 const defaultConfig = (override: IDictionary = {}) => ({
   components: { GoogleMap, StoryWrapper },

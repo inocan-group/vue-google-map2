@@ -1,11 +1,10 @@
 import { IDictionary } from 'common-types'
 import { select } from '@storybook/addon-knobs'
 import { randomPhoenix, redCircleIcon } from './index'
-import { SelectTypeOptionsProp } from '@storybook/addon-knobs/dist/components/types'
 import * as icons from '../svg/index'
 
 export const markerBasicsKnobs = (override: IDictionary = {}) => {
-  const markerOptions: SelectTypeOptionsProp<any> = {
+  const markerOptions: IDictionary = {
     None: [],
     Single: [{ position: randomPhoenix(), title: 'Single Marker Title', label: '1' }],
     Dual: [
@@ -13,7 +12,7 @@ export const markerBasicsKnobs = (override: IDictionary = {}) => {
       { position: randomPhoenix(), title: 'Another title', label: 'B' },
     ],
   }
-  const includedSvgSymbolIcons: SelectTypeOptionsProp<any> = {
+  const includedSvgSymbolIcons: IDictionary = {
     None: [],
     Star: [
       {
@@ -91,7 +90,7 @@ export const markerBasicsKnobs = (override: IDictionary = {}) => {
     ],
   }
 
-  const externalImages: SelectTypeOptionsProp<any> = {
+  const externalImages: IDictionary = {
     None: [],
     'New Icon': [
       {

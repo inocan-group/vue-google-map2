@@ -49,6 +49,21 @@ export type IMarkerOptions = google.maps.MarkerOptions
  * _plus_ an identifying `id` for tracking, matching and event mgmt
  */
 export type MarkerOptionsWithId = IMarkerOptions & { id: string }
+/**
+ * The Google **Polyline** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Polyline)
+ */
+export type Polyline = google.maps.Polyline
+/**
+ * The options that can be sent into a `Polyline`'s constructor
+ */
+export type IPolylineOptions = google.maps.PolylineOptions
+/**
+ * The options that can be sent into a `Polyline`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type IPolylineOptionsWithId = IPolylineOptions & { id: string }
 
 /**
  * A data point entry for a heatmap. This is a geographical data
@@ -80,6 +95,20 @@ export const markerEvents = [
   'shape_changed',
   'title_changed',
   'visible_changed',
+]
+
+export const polylineEvents = [
+  'click',
+  'dblclick',
+  'drag',
+  'dragend',
+  'dragstart',
+  'mousedown',
+  'mousemove',
+  'mouseout',
+  'mouseover',
+  'mouseup',
+  'rightclick',
 ]
 
 export type IMarkerEvent = typeof markerEvents & string

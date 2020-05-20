@@ -33,7 +33,6 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import GoogleMapConnection, { IGoogleApi } from "./loader/GoogleMapConnection";
-import GoogleMapLine from "./Shapes/GoogleMapLine.vue";
 import GoogleMapPolygon from "./Shapes/GoogleMapPolygon.vue";
 import GoogleMapRectangle from "./Shapes/GoogleMapRectangle.vue";
 import { loadNow } from "./loader/googleMapsLoader";
@@ -62,7 +61,6 @@ export interface IGoogleMapConfig {
 @Component({
   components: {
     GoogleMapPolygon,
-    GoogleMapLine,
     GoogleMapRectangle
   }
 })

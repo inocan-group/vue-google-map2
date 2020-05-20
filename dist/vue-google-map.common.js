@@ -5132,12 +5132,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5967f498-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=95818b1e&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5967f498-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=4824c1fe&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"googleMap",class:_vm._classes,style:(_vm.style)},[(_vm.ready)?_c('div',[_vm._t("default"),_vm._l((_vm.lines),function(line){return _c('google-map-line',{key:line.id,attrs:{"path":line.path,"google":_vm._api,"map":_vm._map},on:{"update:path":function($event){return _vm.$set(line, "path", $event)}}})}),_vm._l((_vm.polygons),function(polygon){return _c('google-map-polygon',{key:polygon.id,attrs:{"paths":polygon.paths,"map":_vm._map,"google":_vm._api},on:{"update:paths":function($event){return _vm.$set(polygon, "paths", $event)}}})}),_vm._l((_vm.rectangles),function(rectangle){return _c('google-map-rectangle',{key:rectangle.id,attrs:{"rectangle":rectangle.bounds,"map":_vm._map,"google":_vm._api}})})],2):_c('div',[_c('p',[_vm._v("API not ready yet")])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=95818b1e&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=4824c1fe&
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("9de7");
@@ -6064,423 +6064,6 @@ function isPromise(obj) {
     return obj instanceof Promise || (obj && typeof obj.then === 'function');
 }
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-defaults.ts
-var COLORS = {
-  POINT: 'rgb(243,114,114)',
-  POINT_FILL: 'rgb(255,255,255)',
-  LANDSCAPE: '#DCDCDC',
-  BORDERS: 'rgb(195,230,255)',
-  SELECTED_POINT: 'rgb(0,184,83)',
-  BROWN: 'rgb(139,69,19)',
-  BLACK: 'rgb(0,0,0)',
-  DARK: 'rgb(20,20,20)',
-  BLUE: 'rgb(77,109,155)',
-  LIGHT_BLUE: 'rgb(124,156,201)',
-  WHITE: 'rgb(255,255,255)',
-  WHITEY: 'rgb(240,240,240)',
-  GREEN: 'rgb(0,155,77)',
-  TOMATO: 'rgb(243,114,114)'
-};
-var POINT_MARKER_ICON_CONFIG = {
-  path: 'M 0, 0 m -5, 0 a 5,5 0 1,0 10,0 a 5,5 0 1,0 -10,0',
-  strokeOpacity: 0.7,
-  strokeWeight: 4,
-  strokeColor: COLORS.POINT,
-  fillColor: COLORS.POINT_FILL,
-  fillOpacity: 0.7,
-  scale: 1
-};
-/**
- * Controls get placed in a fixed location that is relative to the map's bounding box.
- * This enumeration is based off of `google.maps.ControlPosition`
- * For more info: [docs](https://developers.google.com/maps/documentation/javascript/controls)
- */
-
-var IControlPosition;
-
-(function (IControlPosition) {
-  /** Elements are positioned in the center of the bottom row. */
-  IControlPosition[IControlPosition["BOTTOM_CENTER"] = 0] = "BOTTOM_CENTER";
-  /**
-   * Elements are positioned in the bottom left and flow towards the middle.
-   * Elements are positioned to the right of the Google logo.
-   */
-
-  IControlPosition[IControlPosition["BOTTOM_LEFT"] = 1] = "BOTTOM_LEFT";
-  /**
-   * Elements are positioned in the bottom right and flow towards the middle.
-   * Elements are positioned to the left of the copyrights.
-   */
-
-  IControlPosition[IControlPosition["BOTTOM_RIGHT"] = 2] = "BOTTOM_RIGHT";
-  /**
-   * Elements are positioned on the left, above bottom-left elements, and flow
-   * upwards.
-   */
-
-  IControlPosition[IControlPosition["LEFT_BOTTOM"] = 3] = "LEFT_BOTTOM";
-  /** Elements are positioned in the center of the left side. */
-
-  IControlPosition[IControlPosition["LEFT_CENTER"] = 4] = "LEFT_CENTER";
-  /**
-   * Elements are positioned on the left, below top-left elements, and flow
-   * downwards.
-   */
-
-  IControlPosition[IControlPosition["LEFT_TOP"] = 5] = "LEFT_TOP";
-  /**
-   * Elements are positioned on the right, above bottom-right elements, and
-   * flow upwards.
-   */
-
-  IControlPosition[IControlPosition["RIGHT_BOTTOM"] = 6] = "RIGHT_BOTTOM";
-  /** Elements are positioned in the center of the right side. */
-
-  IControlPosition[IControlPosition["RIGHT_CENTER"] = 7] = "RIGHT_CENTER";
-  /** Elements are positioned on the right, below top-right elements, and flow downwards. */
-
-  IControlPosition[IControlPosition["RIGHT_TOP"] = 8] = "RIGHT_TOP";
-  /**    Elements are positioned in the center of the top row. */
-
-  IControlPosition[IControlPosition["TOP_CENTER"] = 9] = "TOP_CENTER";
-  /** Elements are positioned in the top left and flow towards the middle. */
-
-  IControlPosition[IControlPosition["TOP_LEFT"] = 10] = "TOP_LEFT";
-  /** Elements are positioned in the top right and flow towards the middle. */
-
-  IControlPosition[IControlPosition["TOP_RIGHT"] = 11] = "TOP_RIGHT";
-})(IControlPosition || (IControlPosition = {}));
-
-var DEFAULT_MAP_CONFIG = {
-  zoomControl: true,
-  mapTypeControl: false,
-  scaleControl: false,
-  streetViewControl: false,
-  rotateControl: false,
-  fullscreenControl: true,
-  fullscreenControlOptions: {
-    position: 10
-  },
-  zoom: 4,
-  center: {
-    lat: 35,
-    lng: -95
-  }
-};
-var ALT_MAP_CONFIG = {
-  clickableIcons: false,
-  streetViewControl: false,
-  panControlOptions: false,
-  gestureHandling: 'cooperative',
-  backgroundColor: COLORS.LANDSCAPE,
-  mapTypeControl: false,
-  zoomControlOptions: {
-    style: 'SMALL'
-  },
-  minZoom: 2,
-  maxZoom: 8,
-  styles: [{
-    featureType: 'landscape',
-    stylers: [{
-      hue: COLORS.LANDSCAPE
-    }, {
-      saturation: 50.2
-    }, {
-      lightness: -34.8
-    }, {
-      gamma: 1
-    }]
-  }, {
-    featureType: 'poi',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'road.highway',
-    stylers: [{
-      hue: COLORS.LANDSCAPE
-    }, {
-      saturation: -19.8
-    }, {
-      lightness: -1.8
-    }, {
-      gamma: 1
-    }]
-  }, {
-    featureType: 'road.arterial',
-    stylers: [{
-      hue: COLORS.LANDSCAPE
-    }, {
-      saturation: 72.4
-    }, {
-      lightness: -32.6
-    }, {
-      gamma: 1
-    }]
-  }, {
-    featureType: 'road.local',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'transit',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'administrative.province',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'administrative.locality',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'administrative.province',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'administrative.land_parcel',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'administrative.neighborhood',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'administrative.country',
-    elementType: 'geometry.stroke',
-    stylers: [{
-      visibility: 'on'
-    }, {
-      color: COLORS.BORDERS
-    }]
-  }, {
-    featureType: 'administrative',
-    elementType: 'labels',
-    stylers: [{
-      visibility: 'off'
-    }]
-  }, {
-    featureType: 'water',
-    stylers: [{
-      hue: COLORS.BLUE
-    }, {
-      saturation: -63.2
-    }, {
-      lightness: 38
-    }, {
-      gamma: 1
-    }]
-  }]
-};
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/shape-defaults.ts
-
-var LINE_SYMBOL_CONFIG = {
-  path: 'M 0,-2 0,2',
-  strokeOpacity: 1,
-  strokeWeight: 2,
-  scale: 1
-};
-var LINE_PATH_CONFIG = {
-  clickable: false,
-  geodesic: false,
-  strokeOpacity: 0,
-  strokeColor: COLORS.WHITE,
-  icons: [{
-    icon: LINE_SYMBOL_CONFIG,
-    repeat: '10px'
-  }]
-};
-var POLYGON_PATH_CONFIG = {
-  fillOpacity: 0,
-  dragable: false,
-  clickable: true,
-  editable: false,
-  geodesic: false,
-  strokeColor: COLORS.BLACK,
-  strokeOpacity: 0.9,
-  strokeWeight: 2
-};
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapLine.vue?vue&type=script&lang=ts&
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-
-var GoogleMapLinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/function (_Vue) {
-  _inherits(GoogleMapLine, _Vue);
-
-  function GoogleMapLine() {
-    _classCallCheck(this, GoogleMapLine);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapLine).apply(this, arguments));
-  }
-
-  _createClass(GoogleMapLine, [{
-    key: "mounted",
-    value: function mounted() {
-      var Polyline = this.google.maps.Polyline;
-      new Polyline(_objectSpread({
-        path: this.path,
-        map: this.map
-      }, LINE_PATH_CONFIG));
-    }
-  }, {
-    key: "render",
-    value: function render() {}
-  }]);
-
-  return GoogleMapLine;
-}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
-
-__decorate([Prop()], GoogleMapLinevue_type_script_lang_ts_GoogleMapLine.prototype, "google", void 0);
-
-__decorate([Prop()], GoogleMapLinevue_type_script_lang_ts_GoogleMapLine.prototype, "map", void 0);
-
-__decorate([Prop()], GoogleMapLinevue_type_script_lang_ts_GoogleMapLine.prototype, "path", void 0);
-
-GoogleMapLinevue_type_script_lang_ts_GoogleMapLine = __decorate([vue_class_component_esm], GoogleMapLinevue_type_script_lang_ts_GoogleMapLine);
-/* harmony default export */ var GoogleMapLinevue_type_script_lang_ts_ = (GoogleMapLinevue_type_script_lang_ts_GoogleMapLine);
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapLine.vue?vue&type=script&lang=ts&
- /* harmony default export */ var Shapes_GoogleMapLinevue_type_script_lang_ts_ = (GoogleMapLinevue_type_script_lang_ts_); 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapLine.vue
-var GoogleMapLine_render, GoogleMapLine_staticRenderFns
-
-
-
-
-/* normalize component */
-
-var component = normalizeComponent(
-  Shapes_GoogleMapLinevue_type_script_lang_ts_,
-  GoogleMapLine_render,
-  GoogleMapLine_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var Shapes_GoogleMapLine = (component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-types.ts
 
 var markerEvents = ['click', 'dblclick', 'rightclick', 'dragstart', 'dragend', 'drag', 'mouseover', 'draggable_changed', 'clickable_changed', 'zindex_changed', 'icon_changed', 'position_changed', 'shape_changed', 'title_changed', 'visible_changed'];
@@ -6625,6 +6208,101 @@ GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension = __decorate([vue_c
 /* harmony default export */ var GoogleMapExtensionvue_type_script_lang_ts_ = (GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue?vue&type=script&lang=ts&
  /* harmony default export */ var Shapes_GoogleMapExtensionvue_type_script_lang_ts_ = (GoogleMapExtensionvue_type_script_lang_ts_); 
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue
 var GoogleMapExtension_render, GoogleMapExtension_staticRenderFns
 
@@ -6633,7 +6311,7 @@ var GoogleMapExtension_render, GoogleMapExtension_staticRenderFns
 
 /* normalize component */
 
-var GoogleMapExtension_component = normalizeComponent(
+var component = normalizeComponent(
   Shapes_GoogleMapExtensionvue_type_script_lang_ts_,
   GoogleMapExtension_render,
   GoogleMapExtension_staticRenderFns,
@@ -6644,7 +6322,7 @@ var GoogleMapExtension_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var Shapes_GoogleMapExtension = (GoogleMapExtension_component.exports);
+/* harmony default export */ var Shapes_GoogleMapExtension = (component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapPolygon.vue?vue&type=script&lang=ts&
 
 
@@ -6664,9 +6342,9 @@ var GoogleMapExtension_component = normalizeComponent(
 
 
 
-function GoogleMapPolygonvue_type_script_lang_ts_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function GoogleMapPolygonvue_type_script_lang_ts_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { GoogleMapPolygonvue_type_script_lang_ts_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { GoogleMapPolygonvue_type_script_lang_ts_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
@@ -6744,7 +6422,7 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
       var _this = this;
 
       if (polygon) {
-        this._polygon = new this.api.Polygon(GoogleMapPolygonvue_type_script_lang_ts_objectSpread({}, polygon, {
+        this._polygon = new this.api.Polygon(_objectSpread({}, polygon, {
           map: this.map
         }));
         polygonEvents.forEach(function (evt) {
@@ -7124,6 +6802,221 @@ function checkIfScriptTagExists(library, apiKey) {
   var found = document.querySelector("#google-maps-".concat(library, "-js"));
   return Boolean(found);
 }
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-defaults.ts
+var COLORS = {
+  POINT: 'rgb(243,114,114)',
+  POINT_FILL: 'rgb(255,255,255)',
+  LANDSCAPE: '#DCDCDC',
+  BORDERS: 'rgb(195,230,255)',
+  SELECTED_POINT: 'rgb(0,184,83)',
+  BROWN: 'rgb(139,69,19)',
+  BLACK: 'rgb(0,0,0)',
+  DARK: 'rgb(20,20,20)',
+  BLUE: 'rgb(77,109,155)',
+  LIGHT_BLUE: 'rgb(124,156,201)',
+  WHITE: 'rgb(255,255,255)',
+  WHITEY: 'rgb(240,240,240)',
+  GREEN: 'rgb(0,155,77)',
+  TOMATO: 'rgb(243,114,114)'
+};
+var POINT_MARKER_ICON_CONFIG = {
+  path: 'M 0, 0 m -5, 0 a 5,5 0 1,0 10,0 a 5,5 0 1,0 -10,0',
+  strokeOpacity: 0.7,
+  strokeWeight: 4,
+  strokeColor: COLORS.POINT,
+  fillColor: COLORS.POINT_FILL,
+  fillOpacity: 0.7,
+  scale: 1
+};
+/**
+ * Controls get placed in a fixed location that is relative to the map's bounding box.
+ * This enumeration is based off of `google.maps.ControlPosition`
+ * For more info: [docs](https://developers.google.com/maps/documentation/javascript/controls)
+ */
+
+var IControlPosition;
+
+(function (IControlPosition) {
+  /** Elements are positioned in the center of the bottom row. */
+  IControlPosition[IControlPosition["BOTTOM_CENTER"] = 0] = "BOTTOM_CENTER";
+  /**
+   * Elements are positioned in the bottom left and flow towards the middle.
+   * Elements are positioned to the right of the Google logo.
+   */
+
+  IControlPosition[IControlPosition["BOTTOM_LEFT"] = 1] = "BOTTOM_LEFT";
+  /**
+   * Elements are positioned in the bottom right and flow towards the middle.
+   * Elements are positioned to the left of the copyrights.
+   */
+
+  IControlPosition[IControlPosition["BOTTOM_RIGHT"] = 2] = "BOTTOM_RIGHT";
+  /**
+   * Elements are positioned on the left, above bottom-left elements, and flow
+   * upwards.
+   */
+
+  IControlPosition[IControlPosition["LEFT_BOTTOM"] = 3] = "LEFT_BOTTOM";
+  /** Elements are positioned in the center of the left side. */
+
+  IControlPosition[IControlPosition["LEFT_CENTER"] = 4] = "LEFT_CENTER";
+  /**
+   * Elements are positioned on the left, below top-left elements, and flow
+   * downwards.
+   */
+
+  IControlPosition[IControlPosition["LEFT_TOP"] = 5] = "LEFT_TOP";
+  /**
+   * Elements are positioned on the right, above bottom-right elements, and
+   * flow upwards.
+   */
+
+  IControlPosition[IControlPosition["RIGHT_BOTTOM"] = 6] = "RIGHT_BOTTOM";
+  /** Elements are positioned in the center of the right side. */
+
+  IControlPosition[IControlPosition["RIGHT_CENTER"] = 7] = "RIGHT_CENTER";
+  /** Elements are positioned on the right, below top-right elements, and flow downwards. */
+
+  IControlPosition[IControlPosition["RIGHT_TOP"] = 8] = "RIGHT_TOP";
+  /**    Elements are positioned in the center of the top row. */
+
+  IControlPosition[IControlPosition["TOP_CENTER"] = 9] = "TOP_CENTER";
+  /** Elements are positioned in the top left and flow towards the middle. */
+
+  IControlPosition[IControlPosition["TOP_LEFT"] = 10] = "TOP_LEFT";
+  /** Elements are positioned in the top right and flow towards the middle. */
+
+  IControlPosition[IControlPosition["TOP_RIGHT"] = 11] = "TOP_RIGHT";
+})(IControlPosition || (IControlPosition = {}));
+
+var DEFAULT_MAP_CONFIG = {
+  zoomControl: true,
+  mapTypeControl: false,
+  scaleControl: false,
+  streetViewControl: false,
+  rotateControl: false,
+  fullscreenControl: true,
+  fullscreenControlOptions: {
+    position: 10
+  },
+  zoom: 4,
+  center: {
+    lat: 35,
+    lng: -95
+  }
+};
+var ALT_MAP_CONFIG = {
+  clickableIcons: false,
+  streetViewControl: false,
+  panControlOptions: false,
+  gestureHandling: 'cooperative',
+  backgroundColor: COLORS.LANDSCAPE,
+  mapTypeControl: false,
+  zoomControlOptions: {
+    style: 'SMALL'
+  },
+  minZoom: 2,
+  maxZoom: 8,
+  styles: [{
+    featureType: 'landscape',
+    stylers: [{
+      hue: COLORS.LANDSCAPE
+    }, {
+      saturation: 50.2
+    }, {
+      lightness: -34.8
+    }, {
+      gamma: 1
+    }]
+  }, {
+    featureType: 'poi',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'road.highway',
+    stylers: [{
+      hue: COLORS.LANDSCAPE
+    }, {
+      saturation: -19.8
+    }, {
+      lightness: -1.8
+    }, {
+      gamma: 1
+    }]
+  }, {
+    featureType: 'road.arterial',
+    stylers: [{
+      hue: COLORS.LANDSCAPE
+    }, {
+      saturation: 72.4
+    }, {
+      lightness: -32.6
+    }, {
+      gamma: 1
+    }]
+  }, {
+    featureType: 'road.local',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'transit',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'administrative.province',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'administrative.locality',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'administrative.province',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'administrative.land_parcel',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'administrative.neighborhood',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'administrative.country',
+    elementType: 'geometry.stroke',
+    stylers: [{
+      visibility: 'on'
+    }, {
+      color: COLORS.BORDERS
+    }]
+  }, {
+    featureType: 'administrative',
+    elementType: 'labels',
+    stylers: [{
+      visibility: 'off'
+    }]
+  }, {
+    featureType: 'water',
+    stylers: [{
+      hue: COLORS.BLUE
+    }, {
+      saturation: -63.2
+    }, {
+      lightness: 38
+    }, {
+      gamma: 1
+    }]
+  }]
+};
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/shared/coordinatesNotEqual.ts
 function coordinatesNotEqual(a, b) {
   return !a || !b ? true : a.lat !== b.lat || a.lng !== b.lng;
@@ -8221,7 +8114,6 @@ function GoogleMapvue_type_script_lang_ts_objectSpread(target) { for (var i = 1;
 
 
 
-
 var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
   _inherits(GoogleMap, _Vue);
 
@@ -8628,7 +8520,6 @@ __decorate([Watch("markers")], GoogleMapvue_type_script_lang_ts_GoogleMap.protot
 GoogleMapvue_type_script_lang_ts_GoogleMap = __decorate([vue_class_component_esm({
   components: {
     GoogleMapPolygon: Shapes_GoogleMapPolygon,
-    GoogleMapLine: Shapes_GoogleMapLine,
     GoogleMapRectangle: Shapes_GoogleMapRectangle
   }
 })], GoogleMapvue_type_script_lang_ts_GoogleMap);
@@ -9153,12 +9044,10 @@ var GoogleMapCircle_component = normalizeComponent(
 
 
 
-
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 /* concated harmony reexport GoogleMap */__webpack_require__.d(__webpack_exports__, "GoogleMap", function() { return components_GoogleMap; });
 /* concated harmony reexport GoogleMapMarker */__webpack_require__.d(__webpack_exports__, "GoogleMapMarker", function() { return Shapes_GoogleMapMarker; });
 /* concated harmony reexport GoogleMapInfoWindow */__webpack_require__.d(__webpack_exports__, "GoogleMapInfoWindow", function() { return GoogleMapInfoWindow; });
-/* concated harmony reexport GoogleMapLine */__webpack_require__.d(__webpack_exports__, "GoogleMapLine", function() { return Shapes_GoogleMapLine; });
 /* concated harmony reexport GoogleMapPolyline */__webpack_require__.d(__webpack_exports__, "GoogleMapPolyline", function() { return Shapes_GoogleMapPolyline; });
 /* concated harmony reexport GoogleMapPolygon */__webpack_require__.d(__webpack_exports__, "GoogleMapPolygon", function() { return Shapes_GoogleMapPolygon; });
 /* concated harmony reexport GoogleMapRectangle */__webpack_require__.d(__webpack_exports__, "GoogleMapRectangle", function() { return Shapes_GoogleMapRectangle; });

@@ -6487,6 +6487,7 @@ var markerEvents = ['click', 'dblclick', 'rightclick', 'dragstart', 'dragend', '
 var polylineEvents = ['click', 'dblclick', 'drag', 'dragend', 'dragstart', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'rightclick'];
 var polygonEvents = polylineEvents;
 var rectangleEvents = polylineEvents.concat(['bounds_changed']);
+var circleEvents = polylineEvents.concat(['center_changed', 'radius_changed']);
 /**
  * Symbol paths defined by Google
  */
@@ -8991,7 +8992,161 @@ var GoogleMapPolyline_component = normalizeComponent(
 )
 
 /* harmony default export */ var Shapes_GoogleMapPolyline = (GoogleMapPolyline_component.exports);
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapCircle.vue?vue&type=script&lang=ts&
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function GoogleMapCirclevue_type_script_lang_ts_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function GoogleMapCirclevue_type_script_lang_ts_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { GoogleMapCirclevue_type_script_lang_ts_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { GoogleMapCirclevue_type_script_lang_ts_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+
+var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/function (_GoogleMapExtension) {
+  _inherits(GoogleMapCircle, _GoogleMapExtension);
+
+  function GoogleMapCircle() {
+    _classCallCheck(this, GoogleMapCircle);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapCircle).apply(this, arguments));
+  }
+
+  _createClass(GoogleMapCircle, [{
+    key: "mounted",
+    value: function mounted() {
+      var circle;
+      return regeneratorRuntime.async(function mounted$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(this.prep());
+
+            case 2:
+              if (!this.circle) {
+                console.warn("A GoogleMapCircle component was instantiated without any circle config!", {
+                  context: this
+                });
+              }
+
+              if (!(typeof this.circle === 'string')) {
+                _context.next = 13;
+                break;
+              }
+
+              _context.prev = 4;
+              circle = JSON.parse(this.circle);
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](4);
+              throw new Error("A GoogleMapCircle component was passed a \"string\" value for the circle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.circle));
+
+            case 11:
+              _context.next = 14;
+              break;
+
+            case 13:
+              circle = this.circle;
+
+            case 14:
+              if (circle && (!circle.center || !circle.radius)) {
+                console.info("A GoogleMapCircle component was added but didn't have center and radius info. This is typically a mistake.", {
+                  circle: circle
+                });
+              }
+
+              this.draw(circle);
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this, [[4, 8]]);
+    }
+  }, {
+    key: "draw",
+    value: function draw(circle) {
+      var _this = this;
+
+      if (circle) {
+        this._circle = new this.api.Circle(GoogleMapCirclevue_type_script_lang_ts_objectSpread({}, circle, {
+          map: this.map
+        }));
+        circleEvents.forEach(function (evt) {
+          if (_this.callbacks && _this.callbacks[evt]) {
+            _this.listeners[evt] = _this._circle.addListener(evt, _this.callbacks[evt]);
+          }
+        });
+      }
+    }
+  }, {
+    key: "beforeDestroy",
+    value: function beforeDestroy() {
+      if (this._circle) {
+        // remove from map
+        this._circle.setMap(null);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {}
+  }]);
+
+  return GoogleMapCircle;
+}(Shapes_GoogleMapExtension);
+
+__decorate([Prop()], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle.prototype, "circle", void 0);
+
+__decorate([Prop()], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle.prototype, "callbacks", void 0);
+
+GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = __decorate([vue_class_component_esm], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle);
+/* harmony default export */ var GoogleMapCirclevue_type_script_lang_ts_ = (GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle);
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapCircle.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var Shapes_GoogleMapCirclevue_type_script_lang_ts_ = (GoogleMapCirclevue_type_script_lang_ts_); 
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapCircle.vue
+var GoogleMapCircle_render, GoogleMapCircle_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var GoogleMapCircle_component = normalizeComponent(
+  Shapes_GoogleMapCirclevue_type_script_lang_ts_,
+  GoogleMapCircle_render,
+  GoogleMapCircle_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var Shapes_GoogleMapCircle = (GoogleMapCircle_component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/index.ts
+
 
 
 
@@ -9007,6 +9162,7 @@ var GoogleMapPolyline_component = normalizeComponent(
 /* concated harmony reexport GoogleMapPolyline */__webpack_require__.d(__webpack_exports__, "GoogleMapPolyline", function() { return Shapes_GoogleMapPolyline; });
 /* concated harmony reexport GoogleMapPolygon */__webpack_require__.d(__webpack_exports__, "GoogleMapPolygon", function() { return Shapes_GoogleMapPolygon; });
 /* concated harmony reexport GoogleMapRectangle */__webpack_require__.d(__webpack_exports__, "GoogleMapRectangle", function() { return Shapes_GoogleMapRectangle; });
+/* concated harmony reexport GoogleMapCircle */__webpack_require__.d(__webpack_exports__, "GoogleMapCircle", function() { return Shapes_GoogleMapCircle; });
 
 
 

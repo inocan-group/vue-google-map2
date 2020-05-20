@@ -94,6 +94,21 @@ export type IRectangleOptions = google.maps.RectangleOptions
  * _plus_ an identifying `id` for tracking, matching and event mgmt
  */
 export type IRectangleOptionsWithId = IRectangleOptions & { id: string }
+/**
+ * The Google **Circle** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Circle)
+ */
+export type Circle = google.maps.Circle
+/**
+ * The options that can be sent into a `Circle`'s constructor
+ */
+export type ICircleOptions = google.maps.CircleOptions
+/**
+ * The options that can be sent into a `Circle`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type ICircleOptionsWithId = ICircleOptions & { id: string }
 
 /**
  * A data point entry for a heatmap. This is a geographical data
@@ -144,6 +159,8 @@ export const polylineEvents = [
 export const polygonEvents = polylineEvents
 
 export const rectangleEvents = polylineEvents.concat(['bounds_changed'])
+
+export const circleEvents = polylineEvents.concat(['center_changed', 'radius_changed'])
 
 export type IMarkerEvent = typeof markerEvents & string
 

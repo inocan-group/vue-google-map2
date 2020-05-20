@@ -6482,9 +6482,11 @@ var component = normalizeComponent(
 
 /* harmony default export */ var Shapes_GoogleMapLine = (component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-types.ts
+
 var markerEvents = ['click', 'dblclick', 'rightclick', 'dragstart', 'dragend', 'drag', 'mouseover', 'draggable_changed', 'clickable_changed', 'zindex_changed', 'icon_changed', 'position_changed', 'shape_changed', 'title_changed', 'visible_changed'];
 var polylineEvents = ['click', 'dblclick', 'drag', 'dragend', 'dragstart', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'rightclick'];
 var polygonEvents = polylineEvents;
+var rectangleEvents = polylineEvents.concat(['bounds_changed']);
 /**
  * Symbol paths defined by Google
  */
@@ -6810,6 +6812,10 @@ var GoogleMapPolygon_component = normalizeComponent(
 
 
 
+
+
+
+
 function GoogleMapRectanglevue_type_script_lang_ts_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function GoogleMapRectanglevue_type_script_lang_ts_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { GoogleMapRectanglevue_type_script_lang_ts_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { GoogleMapRectanglevue_type_script_lang_ts_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6817,51 +6823,111 @@ function GoogleMapRectanglevue_type_script_lang_ts_objectSpread(target) { for (v
 
 
 
-var DEFAULT_RECTANGLE = {
-  draggable: false,
-  clickable: true,
-  editable: false,
-  visible: true,
-  strokeColor: COLORS.DARK
-};
 
-var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/function (_Vue) {
-  _inherits(GoogleMapLine, _Vue);
 
-  function GoogleMapLine() {
-    _classCallCheck(this, GoogleMapLine);
+var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/function (_GoogleMapExtension) {
+  _inherits(GoogleMapRectangle, _GoogleMapExtension);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapLine).apply(this, arguments));
+  function GoogleMapRectangle() {
+    _classCallCheck(this, GoogleMapRectangle);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapRectangle).apply(this, arguments));
   }
 
-  _createClass(GoogleMapLine, [{
+  _createClass(GoogleMapRectangle, [{
     key: "mounted",
     value: function mounted() {
-      //console.log('Rect', this)
-      var Rectangle = this.google.maps.Rectangle;
-      new Rectangle(GoogleMapRectanglevue_type_script_lang_ts_objectSpread({
-        bounds: this.rectangle,
-        map: this.map
-      }, DEFAULT_RECTANGLE));
+      var rectangle;
+      return regeneratorRuntime.async(function mounted$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(this.prep());
+
+            case 2:
+              if (!this.rectangle) {
+                console.warn("A GoogleMapRectangle component was instantiated without any rectangle config!", {
+                  context: this
+                });
+              }
+
+              if (!(typeof this.rectangle === 'string')) {
+                _context.next = 13;
+                break;
+              }
+
+              _context.prev = 4;
+              rectangle = JSON.parse(this.rectangle);
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](4);
+              throw new Error("A GoogleMapRectangle component was passed a \"string\" value for the rectangle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.rectangle));
+
+            case 11:
+              _context.next = 14;
+              break;
+
+            case 13:
+              rectangle = this.rectangle;
+
+            case 14:
+              if (rectangle && !rectangle.bounds) {
+                console.info("A GoogleMapRectangle component was added but didn't have any bounds info. This is typically a mistake.", {
+                  rectangle: rectangle
+                });
+              }
+
+              this.draw(rectangle);
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this, [[4, 8]]);
+    }
+  }, {
+    key: "draw",
+    value: function draw(rectangle) {
+      var _this = this;
+
+      if (rectangle) {
+        this._rectangle = new this.api.Rectangle(GoogleMapRectanglevue_type_script_lang_ts_objectSpread({}, rectangle, {
+          map: this.map
+        }));
+        rectangleEvents.forEach(function (evt) {
+          if (_this.callbacks && _this.callbacks[evt]) {
+            _this.listeners[evt] = _this._rectangle.addListener(evt, _this.callbacks[evt]);
+          }
+        });
+      }
+    }
+  }, {
+    key: "beforeDestroy",
+    value: function beforeDestroy() {
+      if (this._rectangle) {
+        // remove from map
+        this._rectangle.setMap(null);
+      }
     }
   }, {
     key: "render",
     value: function render() {}
   }]);
 
-  return GoogleMapLine;
-}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
+  return GoogleMapRectangle;
+}(Shapes_GoogleMapExtension);
 
-__decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine.prototype, "google", void 0);
+__decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle.prototype, "rectangle", void 0);
 
-__decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine.prototype, "map", void 0);
+__decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle.prototype, "callbacks", void 0);
 
-__decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine.prototype, "rectangle", void 0);
-
-__decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine.prototype, "config", void 0);
-
-GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine = __decorate([vue_class_component_esm], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine);
-/* harmony default export */ var GoogleMapRectanglevue_type_script_lang_ts_ = (GoogleMapRectanglevue_type_script_lang_ts_GoogleMapLine);
+GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = __decorate([vue_class_component_esm], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle);
+/* harmony default export */ var GoogleMapRectanglevue_type_script_lang_ts_ = (GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapRectangle.vue?vue&type=script&lang=ts&
  /* harmony default export */ var Shapes_GoogleMapRectanglevue_type_script_lang_ts_ = (GoogleMapRectanglevue_type_script_lang_ts_); 
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapRectangle.vue
@@ -6883,7 +6949,7 @@ var GoogleMapRectangle_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var GoogleMapRectangle = (GoogleMapRectangle_component.exports);
+/* harmony default export */ var Shapes_GoogleMapRectangle = (GoogleMapRectangle_component.exports);
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/common-types/dist/common-types.umd.js
 var common_types_umd = __webpack_require__("5aa0");
 
@@ -8562,7 +8628,7 @@ GoogleMapvue_type_script_lang_ts_GoogleMap = __decorate([vue_class_component_esm
   components: {
     GoogleMapPolygon: Shapes_GoogleMapPolygon,
     GoogleMapLine: Shapes_GoogleMapLine,
-    GoogleMapRectangle: GoogleMapRectangle
+    GoogleMapRectangle: Shapes_GoogleMapRectangle
   }
 })], GoogleMapvue_type_script_lang_ts_GoogleMap);
 /* harmony default export */ var GoogleMapvue_type_script_lang_ts_ = (GoogleMapvue_type_script_lang_ts_GoogleMap);
@@ -8940,7 +9006,7 @@ var GoogleMapPolyline_component = normalizeComponent(
 /* concated harmony reexport GoogleMapLine */__webpack_require__.d(__webpack_exports__, "GoogleMapLine", function() { return Shapes_GoogleMapLine; });
 /* concated harmony reexport GoogleMapPolyline */__webpack_require__.d(__webpack_exports__, "GoogleMapPolyline", function() { return Shapes_GoogleMapPolyline; });
 /* concated harmony reexport GoogleMapPolygon */__webpack_require__.d(__webpack_exports__, "GoogleMapPolygon", function() { return Shapes_GoogleMapPolygon; });
-/* concated harmony reexport GoogleMapRectangle */__webpack_require__.d(__webpack_exports__, "GoogleMapRectangle", function() { return GoogleMapRectangle; });
+/* concated harmony reexport GoogleMapRectangle */__webpack_require__.d(__webpack_exports__, "GoogleMapRectangle", function() { return Shapes_GoogleMapRectangle; });
 
 
 

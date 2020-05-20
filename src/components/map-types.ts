@@ -79,6 +79,21 @@ export type IPolygonOptions = google.maps.PolygonOptions
  * _plus_ an identifying `id` for tracking, matching and event mgmt
  */
 export type IPolygonOptionsWithId = IPolygonOptions & { id: string }
+/**
+ * The Google **Rectangle** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Rectangle)
+ */
+export type Rectangle = google.maps.Rectangle
+/**
+ * The options that can be sent into a `Rectangle`'s constructor
+ */
+export type IRectangleOptions = google.maps.RectangleOptions
+/**
+ * The options that can be sent into a `Rectangle`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type IRectangleOptionsWithId = IRectangleOptions & { id: string }
 
 /**
  * A data point entry for a heatmap. This is a geographical data
@@ -127,6 +142,8 @@ export const polylineEvents = [
 ]
 
 export const polygonEvents = polylineEvents
+
+export const rectangleEvents = polylineEvents.concat(['bounds_changed'])
 
 export type IMarkerEvent = typeof markerEvents & string
 

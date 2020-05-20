@@ -6481,7 +6481,172 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var Shapes_GoogleMapLine = (component.exports);
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-types.ts
+var markerEvents = ['click', 'dblclick', 'rightclick', 'dragstart', 'dragend', 'drag', 'mouseover', 'draggable_changed', 'clickable_changed', 'zindex_changed', 'icon_changed', 'position_changed', 'shape_changed', 'title_changed', 'visible_changed'];
+var polylineEvents = ['click', 'dblclick', 'drag', 'dragend', 'dragstart', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'rightclick'];
+var polygonEvents = polylineEvents;
+/**
+ * Symbol paths defined by Google
+ */
+
+var SymbolPath;
+
+(function (SymbolPath) {
+  SymbolPath[SymbolPath["BACKWARD_CLOSED_ARROW"] = 3] = "BACKWARD_CLOSED_ARROW";
+  SymbolPath[SymbolPath["BACKWARD_OPEN_ARROW"] = 4] = "BACKWARD_OPEN_ARROW";
+  SymbolPath[SymbolPath["CIRCLE"] = 0] = "CIRCLE";
+  SymbolPath[SymbolPath["FORWARD_CLOSED_ARROW"] = 1] = "FORWARD_CLOSED_ARROW";
+  SymbolPath[SymbolPath["FORWARD_OPEN_ARROW"] = 2] = "FORWARD_OPEN_ARROW";
+})(SymbolPath || (SymbolPath = {}));
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue?vue&type=script&lang=ts&
+
+
+
+
+
+
+
+
+
+
+
+
+var GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension = /*#__PURE__*/function (_Vue) {
+  _inherits(GoogleMapExtension, _Vue);
+
+  function GoogleMapExtension() {
+    _classCallCheck(this, GoogleMapExtension);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapExtension).apply(this, arguments));
+  }
+
+  _createClass(GoogleMapExtension, [{
+    key: "prep",
+
+    /**
+     * Prep's the object by ensuring that
+     *
+     * 1. the `map` property is set and available
+     * 2. the `api` property is set and available
+     *
+     * With this basis, all operations should be easily achieved
+     */
+    value: function prep() {
+      return regeneratorRuntime.async(function prep$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(this.$parent.getMap());
+
+            case 2:
+              this.map = _context.sent;
+              _context.next = 5;
+              return regeneratorRuntime.awrap(this.$parent.getApi());
+
+            case 5:
+              this.api = _context.sent;
+              this.listeners = {};
+
+            case 7:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this);
+    }
+    /**
+     * Provides the same API surface to children of the children
+     */
+
+  }, {
+    key: "getMap",
+    value: function getMap() {
+      return regeneratorRuntime.async(function getMap$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (this.map) {
+                _context2.next = 3;
+                break;
+              }
+
+              _context2.next = 3;
+              return regeneratorRuntime.awrap(this.prep());
+
+            case 3:
+              return _context2.abrupt("return", this.map);
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, null, this);
+    }
+    /**
+     * Provides the same API surface to children of the children
+     */
+
+  }, {
+    key: "getApi",
+    value: function getApi() {
+      return regeneratorRuntime.async(function getApi$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              if (this.map) {
+                _context3.next = 3;
+                break;
+              }
+
+              _context3.next = 3;
+              return regeneratorRuntime.awrap(this.prep());
+
+            case 3:
+              return _context3.abrupt("return", this.api);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, null, this);
+    }
+  }]);
+
+  return GoogleMapExtension;
+}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
+
+GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension = __decorate([vue_class_component_esm], GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension);
+/* harmony default export */ var GoogleMapExtensionvue_type_script_lang_ts_ = (GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension);
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var Shapes_GoogleMapExtensionvue_type_script_lang_ts_ = (GoogleMapExtensionvue_type_script_lang_ts_); 
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue
+var GoogleMapExtension_render, GoogleMapExtension_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var GoogleMapExtension_component = normalizeComponent(
+  Shapes_GoogleMapExtensionvue_type_script_lang_ts_,
+  GoogleMapExtension_render,
+  GoogleMapExtension_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var Shapes_GoogleMapExtension = (GoogleMapExtension_component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapPolygon.vue?vue&type=script&lang=ts&
+
+
+
+
 
 
 
@@ -6504,8 +6669,9 @@ function GoogleMapPolygonvue_type_script_lang_ts_objectSpread(target) { for (var
 
 
 
-var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/function (_Vue) {
-  _inherits(GoogleMapPolygon, _Vue);
+
+var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/function (_GoogleMapExtension) {
+  _inherits(GoogleMapPolygon, _GoogleMapExtension);
 
   function GoogleMapPolygon() {
     _classCallCheck(this, GoogleMapPolygon);
@@ -6516,12 +6682,82 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
   _createClass(GoogleMapPolygon, [{
     key: "mounted",
     value: function mounted() {
-      //    console.log('paths', this.paths, this.map)
-      var Polygon = this.google.maps.Polygon;
-      new Polygon(GoogleMapPolygonvue_type_script_lang_ts_objectSpread({
-        paths: this.paths,
-        map: this.map
-      }, POLYGON_PATH_CONFIG));
+      var polygon;
+      return regeneratorRuntime.async(function mounted$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(this.prep());
+
+            case 2:
+              if (!this.polygon) {
+                console.warn("A GoogleMapPolygon component was instantiated without any polygon config!", {
+                  context: this
+                });
+              }
+
+              if (!(typeof this.polygon === 'string')) {
+                _context.next = 13;
+                break;
+              }
+
+              _context.prev = 4;
+              polygon = JSON.parse(this.polygon);
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](4);
+              throw new Error("A GoogleMapPolygon component was passed a \"string\" value for the polygon parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polygon));
+
+            case 11:
+              _context.next = 14;
+              break;
+
+            case 13:
+              polygon = this.polygon;
+
+            case 14:
+              if (polygon && !polygon.paths) {
+                console.info("A GoogleMapPolygon component was added but didn't have any paths info. This is typically a mistake.", {
+                  polygon: polygon
+                });
+              }
+
+              this.draw(polygon);
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this, [[4, 8]]);
+    }
+  }, {
+    key: "draw",
+    value: function draw(polygon) {
+      var _this = this;
+
+      if (polygon) {
+        this._polygon = new this.api.Polygon(GoogleMapPolygonvue_type_script_lang_ts_objectSpread({}, polygon, {
+          map: this.map
+        }));
+        polygonEvents.forEach(function (evt) {
+          if (_this.callbacks && _this.callbacks[evt]) {
+            _this.listeners[evt] = _this._polygon.addListener(evt, _this.callbacks[evt]);
+          }
+        });
+      }
+    }
+  }, {
+    key: "beforeDestroy",
+    value: function beforeDestroy() {
+      if (this._polygon) {
+        // remove from map
+        this._polygon.setMap(null);
+      }
     }
   }, {
     key: "render",
@@ -6529,13 +6765,11 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
   }]);
 
   return GoogleMapPolygon;
-}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
+}(Shapes_GoogleMapExtension);
 
-__decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "google", void 0);
+__decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "polygon", void 0);
 
-__decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "map", void 0);
-
-__decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "paths", void 0);
+__decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "callbacks", void 0);
 
 GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = __decorate([vue_class_component_esm], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon);
 /* harmony default export */ var GoogleMapPolygonvue_type_script_lang_ts_ = (GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon);
@@ -7882,22 +8116,6 @@ var roadwaysMinimal = [].concat(_toConsumableArray(roadways), _toConsumableArray
 
 
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-types.ts
-var markerEvents = ['click', 'dblclick', 'rightclick', 'dragstart', 'dragend', 'drag', 'mouseover', 'draggable_changed', 'clickable_changed', 'zindex_changed', 'icon_changed', 'position_changed', 'shape_changed', 'title_changed', 'visible_changed'];
-var polylineEvents = ['click', 'dblclick', 'drag', 'dragend', 'dragstart', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'rightclick'];
-/**
- * Symbol paths defined by Google
- */
-
-var SymbolPath;
-
-(function (SymbolPath) {
-  SymbolPath[SymbolPath["BACKWARD_CLOSED_ARROW"] = 3] = "BACKWARD_CLOSED_ARROW";
-  SymbolPath[SymbolPath["BACKWARD_OPEN_ARROW"] = 4] = "BACKWARD_OPEN_ARROW";
-  SymbolPath[SymbolPath["CIRCLE"] = 0] = "CIRCLE";
-  SymbolPath[SymbolPath["FORWARD_CLOSED_ARROW"] = 1] = "FORWARD_CLOSED_ARROW";
-  SymbolPath[SymbolPath["FORWARD_OPEN_ARROW"] = 2] = "FORWARD_OPEN_ARROW";
-})(SymbolPath || (SymbolPath = {}));
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=script&lang=ts&
 
 
@@ -8382,150 +8600,6 @@ var GoogleMap_component = normalizeComponent(
 )
 
 /* harmony default export */ var components_GoogleMap = (GoogleMap_component.exports);
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue?vue&type=script&lang=ts&
-
-
-
-
-
-
-
-
-
-
-
-
-var GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension = /*#__PURE__*/function (_Vue) {
-  _inherits(GoogleMapExtension, _Vue);
-
-  function GoogleMapExtension() {
-    _classCallCheck(this, GoogleMapExtension);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapExtension).apply(this, arguments));
-  }
-
-  _createClass(GoogleMapExtension, [{
-    key: "prep",
-
-    /**
-     * Prep's the object by ensuring that
-     *
-     * 1. the `map` property is set and available
-     * 2. the `api` property is set and available
-     *
-     * With this basis, all operations should be easily achieved
-     */
-    value: function prep() {
-      return regeneratorRuntime.async(function prep$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return regeneratorRuntime.awrap(this.$parent.getMap());
-
-            case 2:
-              this.map = _context.sent;
-              _context.next = 5;
-              return regeneratorRuntime.awrap(this.$parent.getApi());
-
-            case 5:
-              this.api = _context.sent;
-              this.listeners = {};
-
-            case 7:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, null, this);
-    }
-    /**
-     * Provides the same API surface to children of the children
-     */
-
-  }, {
-    key: "getMap",
-    value: function getMap() {
-      return regeneratorRuntime.async(function getMap$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              if (this.map) {
-                _context2.next = 3;
-                break;
-              }
-
-              _context2.next = 3;
-              return regeneratorRuntime.awrap(this.prep());
-
-            case 3:
-              return _context2.abrupt("return", this.map);
-
-            case 4:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, null, this);
-    }
-    /**
-     * Provides the same API surface to children of the children
-     */
-
-  }, {
-    key: "getApi",
-    value: function getApi() {
-      return regeneratorRuntime.async(function getApi$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              if (this.map) {
-                _context3.next = 3;
-                break;
-              }
-
-              _context3.next = 3;
-              return regeneratorRuntime.awrap(this.prep());
-
-            case 3:
-              return _context3.abrupt("return", this.api);
-
-            case 4:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, null, this);
-    }
-  }]);
-
-  return GoogleMapExtension;
-}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
-
-GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension = __decorate([vue_class_component_esm], GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension);
-/* harmony default export */ var GoogleMapExtensionvue_type_script_lang_ts_ = (GoogleMapExtensionvue_type_script_lang_ts_GoogleMapExtension);
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue?vue&type=script&lang=ts&
- /* harmony default export */ var Shapes_GoogleMapExtensionvue_type_script_lang_ts_ = (GoogleMapExtensionvue_type_script_lang_ts_); 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapExtension.vue
-var GoogleMapExtension_render, GoogleMapExtension_staticRenderFns
-
-
-
-
-/* normalize component */
-
-var GoogleMapExtension_component = normalizeComponent(
-  Shapes_GoogleMapExtensionvue_type_script_lang_ts_,
-  GoogleMapExtension_render,
-  GoogleMapExtension_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var Shapes_GoogleMapExtension = (GoogleMapExtension_component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapMarker.vue?vue&type=script&lang=ts&
 
 
@@ -8726,16 +8800,16 @@ function GoogleMapPolylinevue_type_script_lang_ts_objectSpread(target) { for (va
 
 
 
-var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/function (_GoogleMapExtension) {
-  _inherits(GoogleMapLine, _GoogleMapExtension);
+var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/function (_GoogleMapExtension) {
+  _inherits(GoogleMapPolyline, _GoogleMapExtension);
 
-  function GoogleMapLine() {
-    _classCallCheck(this, GoogleMapLine);
+  function GoogleMapPolyline() {
+    _classCallCheck(this, GoogleMapPolyline);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapLine).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(GoogleMapPolyline).apply(this, arguments));
   }
 
-  _createClass(GoogleMapLine, [{
+  _createClass(GoogleMapPolyline, [{
     key: "mounted",
     value: function mounted() {
       var polyline;
@@ -8748,7 +8822,7 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/functi
 
             case 2:
               if (!this.polyline) {
-                console.warn("A GoogleMapMarker component was instantiated without any polyline config!", {
+                console.warn("A GoogleMapPolyline component was instantiated without any polyline config!", {
                   context: this
                 });
               }
@@ -8766,7 +8840,7 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/functi
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](4);
-              throw new Error("A GoogleMapMarker component was passed a \"string\" value for the polyline parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polyline));
+              throw new Error("A GoogleMapPolyline component was passed a \"string\" value for the polyline parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polyline));
 
             case 11:
               _context.next = 14;
@@ -8777,7 +8851,7 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/functi
 
             case 14:
               if (polyline && !polyline.path) {
-                console.info("A GoogleMapMarker component was added but didn't have any path info. This is typically a mistake.", {
+                console.info("A GoogleMapPolyline component was added but didn't have any path info. This is typically a mistake.", {
                   polyline: polyline
                 });
               }
@@ -8802,7 +8876,7 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/functi
         }));
         polylineEvents.forEach(function (evt) {
           if (_this.callbacks && _this.callbacks[evt]) {
-            _this.listeners.click = _this._polyline.addListener(evt, _this.callbacks[evt]);
+            _this.listeners[evt] = _this._polyline.addListener(evt, _this.callbacks[evt]);
           }
         });
       }
@@ -8820,15 +8894,15 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = /*#__PURE__*/functi
     value: function render() {}
   }]);
 
-  return GoogleMapLine;
+  return GoogleMapPolyline;
 }(Shapes_GoogleMapExtension);
 
-__decorate([Prop()], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine.prototype, "polyline", void 0);
+__decorate([Prop()], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline.prototype, "polyline", void 0);
 
-__decorate([Prop()], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine.prototype, "callbacks", void 0);
+__decorate([Prop()], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline.prototype, "callbacks", void 0);
 
-GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine = __decorate([vue_class_component_esm], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine);
-/* harmony default export */ var GoogleMapPolylinevue_type_script_lang_ts_ = (GoogleMapPolylinevue_type_script_lang_ts_GoogleMapLine);
+GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = __decorate([vue_class_component_esm], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline);
+/* harmony default export */ var GoogleMapPolylinevue_type_script_lang_ts_ = (GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapPolyline.vue?vue&type=script&lang=ts&
  /* harmony default export */ var Shapes_GoogleMapPolylinevue_type_script_lang_ts_ = (GoogleMapPolylinevue_type_script_lang_ts_); 
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapPolyline.vue
@@ -8850,7 +8924,7 @@ var GoogleMapPolyline_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var GoogleMapPolyline = (GoogleMapPolyline_component.exports);
+/* harmony default export */ var Shapes_GoogleMapPolyline = (GoogleMapPolyline_component.exports);
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/index.ts
 
 
@@ -8864,7 +8938,7 @@ var GoogleMapPolyline_component = normalizeComponent(
 /* concated harmony reexport GoogleMapMarker */__webpack_require__.d(__webpack_exports__, "GoogleMapMarker", function() { return Shapes_GoogleMapMarker; });
 /* concated harmony reexport GoogleMapInfoWindow */__webpack_require__.d(__webpack_exports__, "GoogleMapInfoWindow", function() { return GoogleMapInfoWindow; });
 /* concated harmony reexport GoogleMapLine */__webpack_require__.d(__webpack_exports__, "GoogleMapLine", function() { return Shapes_GoogleMapLine; });
-/* concated harmony reexport GoogleMapPolyline */__webpack_require__.d(__webpack_exports__, "GoogleMapPolyline", function() { return GoogleMapPolyline; });
+/* concated harmony reexport GoogleMapPolyline */__webpack_require__.d(__webpack_exports__, "GoogleMapPolyline", function() { return Shapes_GoogleMapPolyline; });
 /* concated harmony reexport GoogleMapPolygon */__webpack_require__.d(__webpack_exports__, "GoogleMapPolygon", function() { return Shapes_GoogleMapPolygon; });
 /* concated harmony reexport GoogleMapRectangle */__webpack_require__.d(__webpack_exports__, "GoogleMapRectangle", function() { return GoogleMapRectangle; });
 

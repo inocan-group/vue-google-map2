@@ -64,6 +64,21 @@ export type IPolylineOptions = google.maps.PolylineOptions
  * _plus_ an identifying `id` for tracking, matching and event mgmt
  */
 export type IPolylineOptionsWithId = IPolylineOptions & { id: string }
+/**
+ * The Google **Polygon** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Polygon)
+ */
+export type Polygon = google.maps.Polygon
+/**
+ * The options that can be sent into a `Polygon`'s constructor
+ */
+export type IPolygonOptions = google.maps.PolygonOptions
+/**
+ * The options that can be sent into a `Polygon`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type IPolygonOptionsWithId = IPolygonOptions & { id: string }
 
 /**
  * A data point entry for a heatmap. This is a geographical data
@@ -110,6 +125,8 @@ export const polylineEvents = [
   'mouseup',
   'rightclick',
 ]
+
+export const polygonEvents = polylineEvents
 
 export type IMarkerEvent = typeof markerEvents & string
 

@@ -52,7 +52,7 @@ export default class GoogleMapMarker extends GoogleMapExtension {
       }) as Marker
       markerEvents.forEach(evt => {
         if (this.callbacks && this.callbacks[evt]) {
-          this.listeners.click = (this._marker as Marker).addListener(evt, this.callbacks[evt])
+          this.listeners[evt] = (this._marker as Marker).addListener(evt, this.callbacks[evt])
         }
       })
     }

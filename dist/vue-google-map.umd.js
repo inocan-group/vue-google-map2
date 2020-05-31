@@ -8872,6 +8872,7 @@ function GoogleMapPolylinevue_type_script_lang_ts_objectSpread(target) { for (va
 
 
 
+
 var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/function (_GoogleMapExtension) {
   _inherits(GoogleMapPolyline, _GoogleMapExtension);
 
@@ -8882,17 +8883,33 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/fu
   }
 
   _createClass(GoogleMapPolyline, [{
-    key: "mounted",
-    value: function mounted() {
+    key: "onConfigChanged",
+    value: function onConfigChanged(oldConfig, newConfig) {
       var polyline;
-      return regeneratorRuntime.async(function mounted$(_context) {
+      return regeneratorRuntime.async(function onConfigChanged$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              if (lodash_isequal_default()(oldConfig, newConfig)) {
+                _context.next = 19;
+                break;
+              }
+
+              if (!(!this.map || !this.api)) {
+                _context.next = 4;
+                break;
+              }
+
+              _context.next = 4;
               return regeneratorRuntime.awrap(this.prep());
 
-            case 2:
+            case 4:
+              if (this._polyline) {
+                this.api.event.clearInstanceListeners(this._polyline);
+
+                this._polyline.setMap(null);
+              }
+
               if (!this.polyline) {
                 console.warn("A GoogleMapPolyline component was instantiated without any polyline config!", {
                   context: this
@@ -8900,28 +8917,28 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/fu
               }
 
               if (!(typeof this.polyline === 'string')) {
-                _context.next = 13;
+                _context.next = 16;
                 break;
               }
 
-              _context.prev = 4;
+              _context.prev = 7;
               polyline = JSON.parse(this.polyline);
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](4);
-              throw new Error("A GoogleMapPolyline component was passed a \"string\" value for the polyline parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polyline));
-
-            case 11:
               _context.next = 14;
               break;
 
-            case 13:
-              polyline = this.polyline;
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](7);
+              throw new Error("A GoogleMapPolyline component was passed a \"string\" value for the polyline parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polyline));
 
             case 14:
+              _context.next = 17;
+              break;
+
+            case 16:
+              polyline = this.polyline;
+
+            case 17:
               if (polyline && !polyline.path) {
                 console.info("A GoogleMapPolyline component was added but didn't have any path info. This is typically a mistake.", {
                   polyline: polyline
@@ -8930,12 +8947,12 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/fu
 
               this.draw(polyline);
 
-            case 16:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, null, this, [[4, 8]]);
+      }, null, this, [[7, 11]]);
     }
   }, {
     key: "draw",
@@ -8958,6 +8975,8 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/fu
     value: function beforeDestroy() {
       if (this._polyline) {
         // remove from map
+        this.api.event.clearInstanceListeners(this._polyline);
+
         this._polyline.setMap(null);
       }
     }
@@ -8972,6 +8991,11 @@ var GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = /*#__PURE__*/fu
 __decorate([Prop()], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline.prototype, "polyline", void 0);
 
 __decorate([Prop()], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline.prototype, "callbacks", void 0);
+
+__decorate([Watch('polyline', {
+  deep: true,
+  immediate: true
+})], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline.prototype, "onConfigChanged", null);
 
 GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline = __decorate([vue_class_component_esm], GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline);
 /* harmony default export */ var GoogleMapPolylinevue_type_script_lang_ts_ = (GoogleMapPolylinevue_type_script_lang_ts_GoogleMapPolyline);

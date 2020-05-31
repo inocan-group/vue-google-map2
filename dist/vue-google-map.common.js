@@ -87,28 +87,6 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "017e":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("4474");
-var notARegExp = __webpack_require__("5fce");
-var requireObjectCoercible = __webpack_require__("2ced");
-var correctIsRegExpLogic = __webpack_require__("d8a7");
-
-// `String.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.includes
-$({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
-  includes: function includes(searchString /* , position = 0 */) {
-    return !!~String(requireObjectCoercible(this))
-      .indexOf(notARegExp(searchString), arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-
 /***/ "01d0":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2121,20 +2099,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "5fce":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isRegExp = __webpack_require__("a957");
-
-module.exports = function (it) {
-  if (isRegExp(it)) {
-    throw TypeError("The method doesn't accept regular expressions");
-  } return it;
-};
-
-
-/***/ }),
-
 /***/ "5fe5":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2172,29 +2136,6 @@ var keys = shared('keys');
 module.exports = function (key) {
   return keys[key] || (keys[key] = uid(key));
 };
-
-
-/***/ }),
-
-/***/ "6750":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("4474");
-var $includes = __webpack_require__("ba49").includes;
-var addToUnscopables = __webpack_require__("1c22");
-
-// `Array.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true }, {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('includes');
 
 
 /***/ }),
@@ -4238,25 +4179,6 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "a957":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("b4b2");
-var classof = __webpack_require__("a235");
-var wellKnownSymbol = __webpack_require__("c18a");
-
-var MATCH = wellKnownSymbol('match');
-
-// `IsRegExp` abstract operation
-// https://tc39.github.io/ecma262/#sec-isregexp
-module.exports = function (it) {
-  var isRegExp;
-  return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
-};
-
-
-/***/ }),
-
 /***/ "a95b":
 /***/ (function(module, exports) {
 
@@ -5018,28 +4940,6 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ "d8a7":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("c18a");
-
-var MATCH = wellKnownSymbol('match');
-
-module.exports = function (METHOD_NAME) {
-  var regexp = /./;
-  try {
-    '/./'[METHOD_NAME](regexp);
-  } catch (e) {
-    try {
-      regexp[MATCH] = false;
-      return '/./'[METHOD_NAME](regexp);
-    } catch (f) { /* empty */ }
-  } return false;
-};
-
-
-/***/ }),
-
 /***/ "dd4a":
 /***/ (function(module, exports) {
 
@@ -5161,12 +5061,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2723043a-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=4824c1fe&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"googleMap",class:_vm._classes,style:(_vm.style)},[(_vm.ready)?_c('div',[_vm._t("default"),_vm._l((_vm.lines),function(line){return _c('google-map-line',{key:line.id,attrs:{"path":line.path,"google":_vm._api,"map":_vm._map},on:{"update:path":function($event){return _vm.$set(line, "path", $event)}}})}),_vm._l((_vm.polygons),function(polygon){return _c('google-map-polygon',{key:polygon.id,attrs:{"paths":polygon.paths,"map":_vm._map,"google":_vm._api},on:{"update:paths":function($event){return _vm.$set(polygon, "paths", $event)}}})}),_vm._l((_vm.rectangles),function(rectangle){return _c('google-map-rectangle',{key:rectangle.id,attrs:{"rectangle":rectangle.bounds,"map":_vm._map,"google":_vm._api}})})],2):_c('div',[_c('p',[_vm._v("API not ready yet")])])])}
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2723043a-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=32f5b640&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"googleMap",class:_vm._classes,style:(_vm.style)},[(_vm.ready)?_c('div',[_vm._t("default")],2):_c('div',[_c('p',[_vm._v("API not ready yet")])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=4824c1fe&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=32f5b640&
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("9de7");
@@ -5177,14 +5077,8 @@ var es_array_concat = __webpack_require__("f9d0");
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("54c1");
 
-// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("6750");
-
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__("2203");
-
-// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__("01d0");
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.object.get-own-property-descriptor.js
 var es_object_get_own_property_descriptor = __webpack_require__("e075");
@@ -5200,9 +5094,6 @@ var es_object_to_string = __webpack_require__("60d6");
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("1ca5");
-
-// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("017e");
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("c055");
@@ -6092,6 +5983,9 @@ function Ref(refKey) {
 function isPromise(obj) {
     return obj instanceof Promise || (obj && typeof obj.then === 'function');
 }
+
+// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__("01d0");
 
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-types.ts
 
@@ -8177,9 +8071,6 @@ var roadwaysMinimal = [].concat(_toConsumableArray(roadways), _toConsumableArray
 
 
 
-
-
-
 function GoogleMapvue_type_script_lang_ts_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function GoogleMapvue_type_script_lang_ts_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { GoogleMapvue_type_script_lang_ts_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { GoogleMapvue_type_script_lang_ts_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -8313,12 +8204,12 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
     value: function _mapConfig() {
       return GoogleMapvue_type_script_lang_ts_objectSpread({}, DEFAULT_MAP_CONFIG, {}, this.mapConfig, {}, this.zoomLevel && this.zoomLevel > 0 ? {
         zoom: this.zoomLevel
-      } : {}, {}, this.control("mapTypeControl", "mapType"), {}, this.zoomControl !== 0 ? {
+      } : {}, {}, this.control('mapTypeControl', 'mapType'), {}, this.zoomControl !== 0 ? {
         scaleControl: false,
         zoomeControl: false
-      } : {}, {}, this.control("rotateControl", "rotate"), {}, this.control("fullscreen"), {}, this.center ? {
+      } : {}, {}, this.control('rotateControl', 'rotate'), {}, this.control('fullscreen'), {}, this.center ? {
         center: this.center
-      } : {}, {}, this.control("streetView"), {}, this.theme ? {
+      } : {}, {}, this.control('streetView'), {}, this.theme ? {
         styles: theme_namespaceObject[this.theme]
       } : {});
     }
@@ -8370,44 +8261,9 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
       }
     }
   }, {
-    key: "onMarkersUpdated",
-    value: function onMarkersUpdated() {
-      var _this2 = this;
-
-      var managedMarkers = Object.keys(this._markers || {});
-      var currentMarkers = this.markers ? this.markers.map(function (i) {
-        return i.id;
-      }) : [];
-      (this.markers || []).forEach(function (m) {
-        if (!managedMarkers.includes(m.id)) {
-          // add new marker
-          console.log("adding", m.id, m.position);
-          var marker = new google.maps.Marker(GoogleMapvue_type_script_lang_ts_objectSpread({}, m, {
-            map: _this2._map
-          }));
-          _this2._markers = _this2._markers ? GoogleMapvue_type_script_lang_ts_objectSpread({}, _this2._markers, _defineProperty({}, m.id, marker)) : _defineProperty({}, m.id, marker);
-        } else {
-          // update the marker (if needed)
-          console.log("updating", m.id);
-        }
-      });
-      var removed = managedMarkers.filter(function (i) {
-        return currentMarkers.includes(i);
-      });
-      removed.forEach(function (i) {
-        console.log("removing", i);
-
-        _this2._markers[i].setMap(null);
-
-        delete _this2._markers[i];
-
-        _this2.$emit("map:marker-removed", i);
-      });
-    }
-  }, {
     key: "draw",
     value: function draw() {
-      var _this3 = this;
+      var _this2 = this;
 
       var map;
       return regeneratorRuntime.async(function draw$(_context3) {
@@ -8416,28 +8272,28 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
             case 0:
               map = new this._api.maps.Map(this.$el, this._mapConfig());
               this._map = map;
-              this._zoomListener = map.addListener("zoom_changed", function () {
-                var level = _this3._map.getZoom();
+              this._zoomListener = map.addListener('zoom_changed', function () {
+                var level = _this2._map.getZoom();
 
-                _this3.$emit("map:zoom-level", level);
+                _this2.$emit('map:zoom-level', level);
               });
-              this._centerListener = map.addListener("center_changed", function () {
-                var center = makeCoordLiteral(_this3._map.getCenter());
+              this._centerListener = map.addListener('center_changed', function () {
+                var center = makeCoordLiteral(_this2._map.getCenter());
 
-                _this3.$emit("map:center", center);
+                _this2.$emit('map:center', center);
               }); // MARKERS SETUP
 
               if (this.markers) {
                 this.markers.forEach(function (m) {
                   var marker = new google.maps.Marker(GoogleMapvue_type_script_lang_ts_objectSpread({}, m, {
-                    map: _this3._map
+                    map: _this2._map
                   }));
 
-                  if (!_this3._markers) {
-                    _this3._markers = {};
+                  if (!_this2._markers) {
+                    _this2._markers = {};
                   }
 
-                  _this3._markers[m.id] = marker;
+                  _this2._markers[m.id] = marker;
                 });
               }
 
@@ -8485,7 +8341,7 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return regeneratorRuntime.awrap(loadNow("places", this.apiKey));
+              return regeneratorRuntime.awrap(loadNow('places', this.apiKey));
 
             case 2:
               this._api = _context5.sent;
@@ -8493,7 +8349,7 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
               return regeneratorRuntime.awrap(this.draw());
 
             case 5:
-              this.$emit("google-maps-ready");
+              this.$emit('google-maps-ready');
               this.ready = true;
 
             case 7:
@@ -8522,12 +8378,12 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
   }, {
     key: "control",
     value: function control(name, knownAs) {
-      var _ref2;
+      var _ref;
 
       var value = this[name];
-      return this[name] && this[name] > 0 ? (_ref2 = {}, _defineProperty(_ref2, "".concat(knownAs || name, "Control"), true), _defineProperty(_ref2, "".concat(knownAs || name, "ControlOptions"), {
+      return this[name] && this[name] > 0 ? (_ref = {}, _defineProperty(_ref, "".concat(knownAs || name, "Control"), true), _defineProperty(_ref, "".concat(knownAs || name, "ControlOptions"), {
         position: value
-      }), _ref2) : _defineProperty({}, "".concat(knownAs || name, "Control"), false);
+      }), _ref) : _defineProperty({}, "".concat(knownAs || name, "Control"), false);
     }
   }, {
     key: "api",
@@ -8537,14 +8393,14 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
   }, {
     key: "style",
     get: function get() {
-      var height = this.aspectRatio ? "calc(100vw / ".concat(this.aspectRatio, ")") : "100%";
-      var width = this.width || "100%";
+      var height = this.aspectRatio ? "calc(100vw / ".concat(this.aspectRatio, ")") : '100%';
+      var width = this.width || '100%';
       return "width: ".concat(width, "; height: ").concat(height);
     }
   }, {
     key: "_classes",
     get: function get() {
-      var classes = this.classes ? Array.isArray(this.classes) ? this.classes.join(" ") : this.classes.replace(/,/g, " ") : "";
+      var classes = this.classes ? Array.isArray(this.classes) ? this.classes.join(' ') : this.classes.replace(/,/g, ' ') : '';
       return "google-map ".concat(classes);
     }
   }]);
@@ -8592,11 +8448,9 @@ __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "rota
 
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "panTo", void 0);
 
-__decorate([Watch("zoomLevel"), Watch("theme"), Watch("center")], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "onSettingChange", null);
+__decorate([Watch('zoomLevel'), Watch('theme'), Watch('center')], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "onSettingChange", null);
 
-__decorate([Watch("fullscreen"), Watch("streetView"), Watch("zoomControl"), Watch("rotateControl"), Watch("mapTypeControl"), Watch("rotateControl")], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "onConfigChanged", null);
-
-__decorate([Watch("markers")], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "onMarkersUpdated", null);
+__decorate([Watch('fullscreen'), Watch('streetView'), Watch('zoomControl'), Watch('rotateControl'), Watch('mapTypeControl'), Watch('rotateControl')], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "onConfigChanged", null);
 
 GoogleMapvue_type_script_lang_ts_GoogleMap = __decorate([vue_class_component_esm({
   components: {

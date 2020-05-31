@@ -6505,6 +6505,10 @@ var GoogleMapPolygon_component = normalizeComponent(
 )
 
 /* harmony default export */ var Shapes_GoogleMapPolygon = (GoogleMapPolygon_component.exports);
+// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/lodash.isequal/index.js
+var lodash_isequal = __webpack_require__("e4e5");
+var lodash_isequal_default = /*#__PURE__*/__webpack_require__.n(lodash_isequal);
+
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapRectangle.vue?vue&type=script&lang=ts&
 
 
@@ -6533,6 +6537,7 @@ function GoogleMapRectanglevue_type_script_lang_ts_objectSpread(target) { for (v
 
 
 
+
 var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/function (_GoogleMapExtension) {
   _inherits(GoogleMapRectangle, _GoogleMapExtension);
 
@@ -6543,17 +6548,33 @@ var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/
   }
 
   _createClass(GoogleMapRectangle, [{
-    key: "mounted",
-    value: function mounted() {
+    key: "onConfigChanged",
+    value: function onConfigChanged(oldConfig, newConfig) {
       var rectangle;
-      return regeneratorRuntime.async(function mounted$(_context) {
+      return regeneratorRuntime.async(function onConfigChanged$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              if (lodash_isequal_default()(oldConfig, newConfig)) {
+                _context.next = 19;
+                break;
+              }
+
+              if (!(!this.map || !this.api)) {
+                _context.next = 4;
+                break;
+              }
+
+              _context.next = 4;
               return regeneratorRuntime.awrap(this.prep());
 
-            case 2:
+            case 4:
+              if (this._rectangle) {
+                this.api.event.clearInstanceListeners(this._rectangle);
+
+                this._rectangle.setMap(null);
+              }
+
               if (!this.rectangle) {
                 console.warn("A GoogleMapRectangle component was instantiated without any rectangle config!", {
                   context: this
@@ -6561,28 +6582,28 @@ var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/
               }
 
               if (!(typeof this.rectangle === 'string')) {
-                _context.next = 13;
+                _context.next = 16;
                 break;
               }
 
-              _context.prev = 4;
+              _context.prev = 7;
               rectangle = JSON.parse(this.rectangle);
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](4);
-              throw new Error("A GoogleMapRectangle component was passed a \"string\" value for the rectangle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.rectangle));
-
-            case 11:
               _context.next = 14;
               break;
 
-            case 13:
-              rectangle = this.rectangle;
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](7);
+              throw new Error("A GoogleMapRectangle component was passed a \"string\" value for the rectangle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.rectangle));
 
             case 14:
+              _context.next = 17;
+              break;
+
+            case 16:
+              rectangle = this.rectangle;
+
+            case 17:
               if (rectangle && !rectangle.bounds) {
                 console.info("A GoogleMapRectangle component was added but didn't have any bounds info. This is typically a mistake.", {
                   rectangle: rectangle
@@ -6591,12 +6612,12 @@ var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/
 
               this.draw(rectangle);
 
-            case 16:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, null, this, [[4, 8]]);
+      }, null, this, [[7, 11]]);
     }
   }, {
     key: "draw",
@@ -6619,6 +6640,8 @@ var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/
     value: function beforeDestroy() {
       if (this._rectangle) {
         // remove from map
+        this.api.event.clearInstanceListeners(this._rectangle);
+
         this._rectangle.setMap(null);
       }
     }
@@ -6633,6 +6656,11 @@ var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/
 __decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle.prototype, "rectangle", void 0);
 
 __decorate([Prop()], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle.prototype, "callbacks", void 0);
+
+__decorate([Watch('rectangle', {
+  deep: true,
+  immediate: true
+})], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle.prototype, "onConfigChanged", null);
 
 GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = __decorate([vue_class_component_esm], GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle);
 /* harmony default export */ var GoogleMapRectanglevue_type_script_lang_ts_ = (GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle);
@@ -8587,10 +8615,6 @@ var GoogleMap_component = normalizeComponent(
 )
 
 /* harmony default export */ var components_GoogleMap = (GoogleMap_component.exports);
-// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/lodash.isequal/index.js
-var lodash_isequal = __webpack_require__("e4e5");
-var lodash_isequal_default = /*#__PURE__*/__webpack_require__.n(lodash_isequal);
-
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapMarker.vue?vue&type=script&lang=ts&
 
 

@@ -6361,6 +6361,10 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var Shapes_GoogleMapExtension = (component.exports);
+// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/lodash.isequal/index.js
+var lodash_isequal = __webpack_require__("e4e5");
+var lodash_isequal_default = /*#__PURE__*/__webpack_require__.n(lodash_isequal);
+
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapPolygon.vue?vue&type=script&lang=ts&
 
 
@@ -6389,6 +6393,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/function (_GoogleMapExtension) {
   _inherits(GoogleMapPolygon, _GoogleMapExtension);
 
@@ -6399,17 +6404,33 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
   }
 
   _createClass(GoogleMapPolygon, [{
-    key: "mounted",
-    value: function mounted() {
+    key: "onConfigChanged",
+    value: function onConfigChanged(oldConfig, newConfig) {
       var polygon;
-      return regeneratorRuntime.async(function mounted$(_context) {
+      return regeneratorRuntime.async(function onConfigChanged$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              if (lodash_isequal_default()(oldConfig, newConfig)) {
+                _context.next = 19;
+                break;
+              }
+
+              if (!(!this.map || !this.api)) {
+                _context.next = 4;
+                break;
+              }
+
+              _context.next = 4;
               return regeneratorRuntime.awrap(this.prep());
 
-            case 2:
+            case 4:
+              if (this._polygon) {
+                this.api.event.clearInstanceListeners(this._polygon);
+
+                this._polygon.setMap(null);
+              }
+
               if (!this.polygon) {
                 console.warn("A GoogleMapPolygon component was instantiated without any polygon config!", {
                   context: this
@@ -6417,28 +6438,28 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
               }
 
               if (!(typeof this.polygon === 'string')) {
-                _context.next = 13;
+                _context.next = 16;
                 break;
               }
 
-              _context.prev = 4;
+              _context.prev = 7;
               polygon = JSON.parse(this.polygon);
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](4);
-              throw new Error("A GoogleMapPolygon component was passed a \"string\" value for the polygon parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polygon));
-
-            case 11:
               _context.next = 14;
               break;
 
-            case 13:
-              polygon = this.polygon;
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](7);
+              throw new Error("A GoogleMapPolygon component was passed a \"string\" value for the polygon parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.polygon));
 
             case 14:
+              _context.next = 17;
+              break;
+
+            case 16:
+              polygon = this.polygon;
+
+            case 17:
               if (polygon && !polygon.paths) {
                 console.info("A GoogleMapPolygon component was added but didn't have any paths info. This is typically a mistake.", {
                   polygon: polygon
@@ -6447,12 +6468,12 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
 
               this.draw(polygon);
 
-            case 16:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, null, this, [[4, 8]]);
+      }, null, this, [[7, 11]]);
     }
   }, {
     key: "draw",
@@ -6475,6 +6496,8 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
     value: function beforeDestroy() {
       if (this._polygon) {
         // remove from map
+        this.api.event.clearInstanceListeners(this._polygon);
+
         this._polygon.setMap(null);
       }
     }
@@ -6489,6 +6512,11 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
 __decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "polygon", void 0);
 
 __decorate([Prop()], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "callbacks", void 0);
+
+__decorate([Watch('polygon', {
+  deep: true,
+  immediate: true
+})], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon.prototype, "onConfigChanged", null);
 
 GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = __decorate([vue_class_component_esm], GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon);
 /* harmony default export */ var GoogleMapPolygonvue_type_script_lang_ts_ = (GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon);
@@ -6514,10 +6542,6 @@ var GoogleMapPolygon_component = normalizeComponent(
 )
 
 /* harmony default export */ var Shapes_GoogleMapPolygon = (GoogleMapPolygon_component.exports);
-// EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/lodash.isequal/index.js
-var lodash_isequal = __webpack_require__("e4e5");
-var lodash_isequal_default = /*#__PURE__*/__webpack_require__.n(lodash_isequal);
-
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--14-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/thread-loader/dist/cjs.js!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/babel-loader/lib!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/ts-loader??ref--14-3!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/Shapes/GoogleMapRectangle.vue?vue&type=script&lang=ts&
 
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { IPolygonOptions, Polygon, polygonEvents } from '../map-types'
 import { IDictionary } from 'common-types'
-import GoogleMap from '../GoogleMap.vue'
 import GoogleMapExtension from './GoogleMapExtension.vue'
+import isEqual from 'lodash.isequal'
 
 @Component
 export default class GoogleMapPolygon extends GoogleMapExtension {
@@ -13,33 +13,44 @@ export default class GoogleMapPolygon extends GoogleMapExtension {
   /** the instantiated polygon class */
   protected _polygon?: Polygon
 
-  async mounted() {
-    await this.prep()
-    let polygon: IPolygonOptions
+  @Watch('polygon', { deep: true, immediate: true })
+  async onConfigChanged(oldConfig: IPolygonOptions, newConfig: IPolygonOptions) {
+    if (!isEqual(oldConfig, newConfig)) {
+      if (!this.map || !this.api) {
+        await this.prep()
+      }
 
-    if (!this.polygon) {
-      console.warn(`A GoogleMapPolygon component was instantiated without any polygon config!`, { context: this })
-    }
-    if (typeof this.polygon === 'string') {
-      try {
-        polygon = JSON.parse(this.polygon) as IPolygonOptions
-      } catch (e) {
-        throw new Error(
-          `A GoogleMapPolygon component was passed a "string" value for the polygon parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.polygon}`,
+      if (this._polygon) {
+        this.api.event.clearInstanceListeners(this._polygon)
+        this._polygon.setMap(null)
+      }
+
+      let polygon: IPolygonOptions
+
+      if (!this.polygon) {
+        console.warn(`A GoogleMapPolygon component was instantiated without any polygon config!`, { context: this })
+      }
+      if (typeof this.polygon === 'string') {
+        try {
+          polygon = JSON.parse(this.polygon) as IPolygonOptions
+        } catch (e) {
+          throw new Error(
+            `A GoogleMapPolygon component was passed a "string" value for the polygon parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.polygon}`,
+          )
+        }
+      } else {
+        polygon = this.polygon
+      }
+
+      if (polygon && !polygon.paths) {
+        console.info(
+          `A GoogleMapPolygon component was added but didn't have any paths info. This is typically a mistake.`,
+          { polygon },
         )
       }
-    } else {
-      polygon = this.polygon
-    }
 
-    if (polygon && !polygon.paths) {
-      console.info(
-        `A GoogleMapPolygon component was added but didn't have any paths info. This is typically a mistake.`,
-        { polygon },
-      )
+      this.draw(polygon)
     }
-
-    this.draw(polygon)
   }
 
   draw(polygon: IPolygonOptions) {
@@ -56,6 +67,7 @@ export default class GoogleMapPolygon extends GoogleMapExtension {
   beforeDestroy() {
     if (this._polygon) {
       // remove from map
+      this.api.event.clearInstanceListeners(this._polygon)
       this._polygon.setMap(null)
     }
   }

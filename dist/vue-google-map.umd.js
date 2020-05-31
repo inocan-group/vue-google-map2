@@ -9001,6 +9001,7 @@ function GoogleMapCirclevue_type_script_lang_ts_objectSpread(target) { for (var 
 
 
 
+
 var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/function (_GoogleMapExtension) {
   _inherits(GoogleMapCircle, _GoogleMapExtension);
 
@@ -9011,17 +9012,33 @@ var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/functi
   }
 
   _createClass(GoogleMapCircle, [{
-    key: "mounted",
-    value: function mounted() {
+    key: "onConfigChanged",
+    value: function onConfigChanged(oldConfig, newConfig) {
       var circle;
-      return regeneratorRuntime.async(function mounted$(_context) {
+      return regeneratorRuntime.async(function onConfigChanged$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              if (lodash_isequal_default()(oldConfig, newConfig)) {
+                _context.next = 19;
+                break;
+              }
+
+              if (!(!this.map || !this.api)) {
+                _context.next = 4;
+                break;
+              }
+
+              _context.next = 4;
               return regeneratorRuntime.awrap(this.prep());
 
-            case 2:
+            case 4:
+              if (this._circle) {
+                this.api.event.clearInstanceListeners(this._circle);
+
+                this._circle.setMap(null);
+              }
+
               if (!this.circle) {
                 console.warn("A GoogleMapCircle component was instantiated without any circle config!", {
                   context: this
@@ -9029,28 +9046,28 @@ var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/functi
               }
 
               if (!(typeof this.circle === 'string')) {
-                _context.next = 13;
+                _context.next = 16;
                 break;
               }
 
-              _context.prev = 4;
+              _context.prev = 7;
               circle = JSON.parse(this.circle);
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](4);
-              throw new Error("A GoogleMapCircle component was passed a \"string\" value for the circle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.circle));
-
-            case 11:
               _context.next = 14;
               break;
 
-            case 13:
-              circle = this.circle;
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](7);
+              throw new Error("A GoogleMapCircle component was passed a \"string\" value for the circle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ".concat(_context.t0.message, ". The string value prior to parsing was: ").concat(this.circle));
 
             case 14:
+              _context.next = 17;
+              break;
+
+            case 16:
+              circle = this.circle;
+
+            case 17:
               if (circle && (!circle.center || !circle.radius)) {
                 console.info("A GoogleMapCircle component was added but didn't have center and radius info. This is typically a mistake.", {
                   circle: circle
@@ -9059,12 +9076,12 @@ var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/functi
 
               this.draw(circle);
 
-            case 16:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, null, this, [[4, 8]]);
+      }, null, this, [[7, 11]]);
     }
   }, {
     key: "draw",
@@ -9087,6 +9104,8 @@ var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/functi
     value: function beforeDestroy() {
       if (this._circle) {
         // remove from map
+        this.api.event.clearInstanceListeners(this._circle);
+
         this._circle.setMap(null);
       }
     }
@@ -9101,6 +9120,11 @@ var GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = /*#__PURE__*/functi
 __decorate([Prop()], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle.prototype, "circle", void 0);
 
 __decorate([Prop()], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle.prototype, "callbacks", void 0);
+
+__decorate([Watch('circle', {
+  deep: true,
+  immediate: true
+})], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle.prototype, "onConfigChanged", null);
 
 GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle = __decorate([vue_class_component_esm], GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle);
 /* harmony default export */ var GoogleMapCirclevue_type_script_lang_ts_ = (GoogleMapCirclevue_type_script_lang_ts_GoogleMapCircle);

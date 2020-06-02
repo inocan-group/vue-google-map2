@@ -5070,12 +5070,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2723043a-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=32f5b640&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"61fef3b6-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=6c349f0c&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"googleMap",class:_vm._classes,style:(_vm.style)},[(_vm.ready)?_c('div',[_vm._t("default")],2):_c('div',[_c('p',[_vm._v("API not ready yet")])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=32f5b640&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=6c349f0c&
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("9de7");
@@ -6616,17 +6616,10 @@ var GoogleMapRectangle_component = normalizeComponent(
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/common-types/dist/common-types.umd.js
 var common_types_umd = __webpack_require__("5aa0");
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/loader/googleMapsLoader.ts
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/connect-google-maps/dist/esnext/index.js
 
-
-
-
-
-
-
-
-var cache = {};
-var BASE_URL = 'https://maps.googleapis.com/maps/api/js';
+const cache = {};
+const BASE_URL = "https://maps.googleapis.com/maps/api/js";
 /**
  * **loadNow**
  *
@@ -6634,32 +6627,12 @@ var BASE_URL = 'https://maps.googleapis.com/maps/api/js';
  * a script tag into the page and then waits for the library to load before
  * returning
  */
-
-function loadNow(library, apiKey) {
-  return regeneratorRuntime.async(function loadNow$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          if (!checkIfScriptTagExists(library, apiKey)) {
-            _context.next = 2;
-            break;
-          }
-
-          return _context.abrupt("return", window.google);
-
-        case 2:
-          _context.next = 4;
-          return regeneratorRuntime.awrap(addScriptTagToBrowser(library, apiKey));
-
-        case 4:
-          return _context.abrupt("return", window.google);
-
-        case 5:
-        case "end":
-          return _context.stop();
-      }
+async function loadNow(library, apiKey) {
+    if (checkIfScriptTagExists(library, apiKey)) {
+        return window.google;
     }
-  });
+    await addScriptTagToBrowser(library, apiKey);
+    return window.google;
 }
 /**
  * **preload**
@@ -6668,124 +6641,56 @@ function loadNow(library, apiKey) {
  * free cycles do so. Then after some delay factor, it will add in the script tag to parse
  * the JS. By default the delay is 2 seconds but you can set this to whatever time you like
  */
-
-function preload(library, apiKey) {
-  var delay,
-      _args2 = arguments;
-  return regeneratorRuntime.async(function preload$(_context2) {
-    while (1) {
-      switch (_context2.prev = _context2.next) {
-        case 0:
-          delay = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 2000;
-          addPreloadLinkToBrowser(library, apiKey);
-          _context2.next = 4;
-          return regeneratorRuntime.awrap(Object(common_types_umd["wait"])(delay));
-
-        case 4:
-          _context2.next = 6;
-          return regeneratorRuntime.awrap(addScriptTagToBrowser(library));
-
-        case 6:
-        case "end":
-          return _context2.stop();
-      }
-    }
-  });
+async function preload(library, apiKey, delay = 2000) {
+    addPreloadLinkToBrowser(library, apiKey);
+    await Object(common_types_umd["wait"])(delay);
+    await addScriptTagToBrowser(library);
 }
-
-function addScriptTagToBrowser(library, apiKey) {
-  var options,
-      timeout,
-      waitForLoad,
-      _args4 = arguments;
-  return regeneratorRuntime.async(function addScriptTagToBrowser$(_context4) {
-    while (1) {
-      switch (_context4.prev = _context4.next) {
-        case 0:
-          options = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {};
-
-          if (!checkIfScriptTagExists(library, apiKey)) {
-            _context4.next = 4;
-            break;
-          }
-
-          console.info("Attempt to add script tag for the \"".concat(library, "\" library in Google Maps ignored as this tag already exists in the DOM").concat(apiKey ? ' [ ' + apiKey + ']' : ''));
-          return _context4.abrupt("return");
-
-        case 4:
-          timeout = function timeout() {
-            var howLong,
-                _args3 = arguments;
-            return regeneratorRuntime.async(function timeout$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    howLong = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 2000;
-                    _context3.next = 3;
-                    return regeneratorRuntime.awrap(Object(common_types_umd["wait"])(howLong));
-
-                  case 3:
-                    throw new Error("Timed out waiting for Google API to load [ ".concat(library, " / ").concat(howLong, " ]"));
-
-                  case 4:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            });
-          };
-
-          waitForLoad = function waitForLoad() {
-            var script = document.createElement('script');
-            script.id = "google-maps-".concat(library, "-js");
-            script.src = getUrl(library, apiKey);
-            document.querySelector('head').appendChild(script);
-            return new Promise(function (resolve) {
-              window["".concat(library, "LoaderCallback")] = function () {
+async function addScriptTagToBrowser(library, apiKey, options = {}) {
+    if (checkIfScriptTagExists(library, apiKey)) {
+        console.info(`Attempt to add script tag for the "${library}" library in Google Maps ignored as this tag already exists in the DOM${apiKey ? " [ " + apiKey + "]" : ""}`);
+        return;
+    }
+    const timeout = async (howLong = 2000) => {
+        await Object(common_types_umd["wait"])(howLong);
+        throw new Error(`Timed out waiting for Google API to load [ ${library} / ${howLong} ]`);
+    };
+    const waitForLoad = () => {
+        var script = document.createElement("script");
+        script.id = `google-maps-${library}-js`;
+        script.src = getUrl(library, apiKey);
+        document.querySelector("head").appendChild(script);
+        return new Promise(resolve => {
+            window[`${library}LoaderCallback`] = () => {
                 resolve();
-              };
-            });
-          };
-
-          console.log('adding script to page');
-          return _context4.abrupt("return", Promise.race(options.timeout ? [timeout(options.timeout), waitForLoad()] : [waitForLoad()]));
-
-        case 8:
-        case "end":
-          return _context4.stop();
-      }
-    }
-  });
+            };
+        });
+    };
+    return Promise.race(options.timeout ? [timeout(options.timeout), waitForLoad()] : [waitForLoad()]);
 }
-
 function addPreloadLinkToBrowser(library, apiKey) {
-  var link = document.createElement('link');
-  link.id = "preload-for-".concat(library);
-  link.rel = 'preload';
-  link.as = 'script';
-  link.href = getUrl(library, apiKey, false);
-  document.querySelector('head').appendChild(link);
+    var link = document.createElement("link");
+    link.id = `preload-for-${library}`;
+    link.rel = "preload";
+    link.as = "script";
+    link.href = getUrl(library, apiKey, false);
+    document.querySelector("head").appendChild(link);
 }
-
-function getUrl(library, apiKey) {
-  var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  var url = "".concat(BASE_URL, "?libraries=").concat(library, "&sensors=false");
-
-  if (apiKey) {
-    url = "".concat(url, "&key=").concat(apiKey);
-  }
-
-  if (callback) {
-    url = "".concat(url, "&callback=").concat(library, "LoaderCallback");
-  }
-
-  return url;
+function getUrl(library, apiKey, callback = true) {
+    let url = `${BASE_URL}?libraries=${library}&sensors=false`;
+    if (apiKey) {
+        url = `${url}&key=${apiKey}`;
+    }
+    if (callback) {
+        url = `${url}&callback=${library}LoaderCallback`;
+    }
+    return url;
 }
-
 function checkIfScriptTagExists(library, apiKey) {
-  var found = document.querySelector("#google-maps-".concat(library, "-js"));
-  return Boolean(found);
+    const found = document.querySelector(`#google-maps-${library}-js`);
+    return Boolean(found);
 }
+
 // CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/map-defaults.ts
 var COLORS = {
   POINT: 'rgb(243,114,114)',
@@ -8422,8 +8327,6 @@ __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "apiK
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "loadingStrategy", void 0);
 
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "mapConfig", void 0);
-
-__decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "connection", void 0);
 
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "width", void 0);
 

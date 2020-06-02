@@ -11,10 +11,10 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import GoogleMapConnection, { IGoogleApi } from './loader/GoogleMapConnection'
+import { IGoogleApi } from './loader/GoogleMapConnection'
 import GoogleMapPolygon from './Shapes/GoogleMapPolygon.vue'
 import GoogleMapRectangle from './Shapes/GoogleMapRectangle.vue'
-import { loadNow } from './loader/googleMapsLoader'
+import { loadNow } from 'connect-google-maps'
 import { DEFAULT_MAP_CONFIG } from './map-defaults'
 import {
   IMapRectangle,
@@ -47,7 +47,6 @@ export default class GoogleMap extends Vue {
   @Prop() apiKey!: string
   @Prop() loadingStrategy?: 'now' | 'wait'
   @Prop() mapConfig!: any
-  @Prop() connection?: GoogleMapConnection
   /**
    * optionally state the width as "250px", "85%", etc.; if not stated it will
    * by default assume 100%.

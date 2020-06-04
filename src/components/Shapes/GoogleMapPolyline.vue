@@ -60,6 +60,7 @@ export default class GoogleMapPolyline extends GoogleMapExtension {
         if (this.callbacks && this.callbacks[evt]) {
           this.listeners[evt] = (this._polyline as Polyline).addListener(evt, this.callbacks[evt])
         }
+        (this._polyline as Polyline).addListener(evt, () => this.$emit(evt.replace('_', ':')))
       })
     }
   }

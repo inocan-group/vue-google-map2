@@ -60,6 +60,7 @@ export default class GoogleMapPolygon extends GoogleMapExtension {
         if (this.callbacks && this.callbacks[evt]) {
           this.listeners[evt] = (this._polygon as Polygon).addListener(evt, this.callbacks[evt])
         }
+        (this._polygon as Polygon).addListener(evt, () => this.$emit(evt.replace('_', ':')))
       })
     }
   }

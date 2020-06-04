@@ -6269,6 +6269,7 @@ var lodash_isequal_default = /*#__PURE__*/__webpack_require__.n(lodash_isequal);
 
 
 
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6373,6 +6374,10 @@ var GoogleMapPolygonvue_type_script_lang_ts_GoogleMapPolygon = /*#__PURE__*/func
           if (_this.callbacks && _this.callbacks[evt]) {
             _this.listeners[evt] = _this._polygon.addListener(evt, _this.callbacks[evt]);
           }
+
+          _this._polygon.addListener(evt, function () {
+            return _this.$emit(evt.replace('_', ':'));
+          });
         });
       }
     }

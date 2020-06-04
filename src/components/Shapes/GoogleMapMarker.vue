@@ -63,6 +63,7 @@ export default class GoogleMapMarker extends GoogleMapExtension {
         if (this.callbacks && this.callbacks[evt]) {
           this.listeners[evt] = (this._marker as Marker).addListener(evt, this.callbacks[evt])
         }
+        (this._marker as Marker).addListener(evt, () => this.$emit(evt.replace('_', ':')))
       })
     }
   }

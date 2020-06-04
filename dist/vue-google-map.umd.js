@@ -8399,6 +8399,7 @@ var GoogleMap_component = normalizeComponent(
 
 
 
+
 function GoogleMapMarkervue_type_script_lang_ts_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function GoogleMapMarkervue_type_script_lang_ts_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { GoogleMapMarkervue_type_script_lang_ts_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { GoogleMapMarkervue_type_script_lang_ts_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -8503,6 +8504,10 @@ var GoogleMapMarkervue_type_script_lang_ts_GoogleMapMarker = /*#__PURE__*/functi
           if (_this.callbacks && _this.callbacks[evt]) {
             _this.listeners[evt] = _this._marker.addListener(evt, _this.callbacks[evt]);
           }
+
+          _this._marker.addListener(evt, function () {
+            return _this.$emit(evt.replace('_', ':'));
+          });
         });
       }
     }

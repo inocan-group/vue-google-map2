@@ -60,6 +60,7 @@ export default class GoogleMapCircle extends GoogleMapExtension {
         if (this.callbacks && this.callbacks[evt]) {
           this.listeners[evt] = (this._circle as Circle).addListener(evt, this.callbacks[evt])
         }
+        (this._circle as Circle).addListener(evt, () => this.$emit(evt.replace('_', ':')))
       })
     }
   }

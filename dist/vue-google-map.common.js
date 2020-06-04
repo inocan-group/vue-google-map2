@@ -5061,12 +5061,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"61fef3b6-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=6c349f0c&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"61fef3b6-vue-loader-template"}!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/cache-loader/dist/cjs.js??ref--0-0!c:/Users/huiel/Code/inocan/vue-google-map/node_modules/vue-loader/lib??vue-loader-options!c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=f7da2d06&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"googleMap",class:_vm._classes,style:(_vm.style)},[(_vm.ready)?_c('div',[_vm._t("default")],2):_c('div',[_c('p',[_vm._v("API not ready yet")])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=6c349f0c&
+// CONCATENATED MODULE: c:/Users/huiel/Code/inocan/vue-google-map/src/components/GoogleMap.vue?vue&type=template&id=f7da2d06&
 
 // EXTERNAL MODULE: c:/Users/huiel/Code/inocan/vue-google-map/node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("9de7");
@@ -8000,9 +8000,6 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
     _classCallCheck(this, GoogleMap);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(GoogleMap).apply(this, arguments));
-    /** a dictionary of markers registed to the map any given time */
-
-    _this._markers = {};
     _this.ready = false;
     return _this;
   }
@@ -8186,23 +8183,9 @@ var GoogleMapvue_type_script_lang_ts_GoogleMap = /*#__PURE__*/function (_Vue) {
                 var center = makeCoordLiteral(_this2._map.getCenter());
 
                 _this2.$emit('map:center', center);
-              }); // MARKERS SETUP
+              });
 
-              if (this.markers) {
-                this.markers.forEach(function (m) {
-                  var marker = new google.maps.Marker(GoogleMapvue_type_script_lang_ts_objectSpread({}, m, {
-                    map: _this2._map
-                  }));
-
-                  if (!_this2._markers) {
-                    _this2._markers = {};
-                  }
-
-                  _this2._markers[m.id] = marker;
-                });
-              }
-
-            case 5:
+            case 4:
             case "end":
               return _context3.stop();
           }
@@ -8324,14 +8307,6 @@ __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "widt
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "aspectRatio", void 0);
 
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "classes", void 0);
-
-__decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "lines", void 0);
-
-__decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "polygons", void 0);
-
-__decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "rectangles", void 0);
-
-__decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "markers", void 0);
 
 __decorate([Prop()], GoogleMapvue_type_script_lang_ts_GoogleMap.prototype, "theme", void 0);
 

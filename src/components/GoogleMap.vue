@@ -17,14 +17,10 @@ import GoogleMapRectangle from './Shapes/GoogleMapRectangle.vue'
 import { loadNow } from 'connect-google-maps'
 import { DEFAULT_MAP_CONFIG } from './map-defaults'
 import {
-  IMapRectangle,
   IMapTypeStyle,
   IMap,
   IMapsEventListener,
   IMapsCoordinate,
-  Marker,
-  MarkerOptionsWithId,
-  IMarkerOptions,
   IMapApi,
 } from './map-types'
 import { wait, IDictionary } from 'common-types'
@@ -64,16 +60,6 @@ export default class GoogleMap extends Vue {
    * annotate the google map DIV
    */
   @Prop() classes?: string
-  @Prop() lines?: Array<{
-    id: string
-    path: Array<{ lat: number; lng: number }>
-  }>
-  @Prop() polygons?: { id: string; paths: any }
-  @Prop() rectangles?: IMapRectangle[]
-  /** the user specified set of markers */
-  @Prop() markers?: MarkerOptionsWithId[]
-  /** a dictionary of markers registed to the map any given time */
-  protected _markers: IDictionary<Marker> = {}
 
   @Prop() theme?: keyof typeof theme
   @Prop() center?: { lat: number; lng: number }
@@ -239,17 +225,6 @@ export default class GoogleMap extends Vue {
       const center = makeCoordLiteral((this._map as IMap).getCenter())
       this.$emit('map:center', center)
     })
-
-    // MARKERS SETUP
-    if (this.markers) {
-      this.markers.forEach(m => {
-        const marker = new google.maps.Marker({ ...m, map: this._map })
-        if (!this._markers) {
-          this._markers = {}
-        }
-        this._markers[m.id] = marker
-      })
-    }
   }
 
   async redraw() {

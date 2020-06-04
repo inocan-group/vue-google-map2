@@ -6455,6 +6455,7 @@ var GoogleMapPolygon_component = normalizeComponent(
 
 
 
+
 function GoogleMapRectanglevue_type_script_lang_ts_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function GoogleMapRectanglevue_type_script_lang_ts_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { GoogleMapRectanglevue_type_script_lang_ts_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { GoogleMapRectanglevue_type_script_lang_ts_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6559,6 +6560,10 @@ var GoogleMapRectanglevue_type_script_lang_ts_GoogleMapRectangle = /*#__PURE__*/
           if (_this.callbacks && _this.callbacks[evt]) {
             _this.listeners[evt] = _this._rectangle.addListener(evt, _this.callbacks[evt]);
           }
+
+          _this._rectangle.addListener(evt, function () {
+            return _this.$emit(evt.replace('_', ':'));
+          });
         });
       }
     }

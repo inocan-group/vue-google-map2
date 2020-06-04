@@ -60,6 +60,7 @@ export default class GoogleMapRectangle extends GoogleMapExtension {
         if (this.callbacks && this.callbacks[evt]) {
           this.listeners[evt] = (this._rectangle as Rectangle).addListener(evt, this.callbacks[evt])
         }
+        (this._rectangle as Rectangle).addListener(evt, () => this.$emit(evt.replace('_', ':')))
       })
     }
   }

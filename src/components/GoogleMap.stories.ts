@@ -33,7 +33,7 @@ const expandConfig = () => ({
   template: withWrapperKnobs(`
         <GoogleMap
           v-on="$listeners"
-          apiKey='AIzaSyD-AQKOVKFqVWF98qnYMvpFNH_u_ZrUOQk'
+          apiKey=''
           :center="center"
           :markers="markers"
           :panTo="panTo"

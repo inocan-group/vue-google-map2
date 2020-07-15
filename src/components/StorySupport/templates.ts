@@ -14,7 +14,7 @@ export const basicTemplate = () =>
   withWrapperKnobs(`
     <GoogleMap
         v-on="$listeners"
-        apiKey='AIzaSyD-AQKOVKFqVWF98qnYMvpFNH_u_ZrUOQk'
+        apiKey=''
         ${dynamicProps}
     />
 `)
@@ -22,7 +22,7 @@ export const basicTemplate = () =>
 export const templateMarkerBasics = () => {
   return withWrapperKnobs(`
 <google-map
-  apiKey='AIzaSyD-AQKOVKFqVWF98qnYMvpFNH_u_ZrUOQk'
+  apiKey=''
    ${dynamicProps}
 >
   <google-map-marker marker='{ "position": { "lat": 33.448376, "lng": -112.074036 }, "label": "S" }'  />

@@ -49,6 +49,66 @@ export type IMarkerOptions = google.maps.MarkerOptions
  * _plus_ an identifying `id` for tracking, matching and event mgmt
  */
 export type MarkerOptionsWithId = IMarkerOptions & { id: string }
+/**
+ * The Google **Polyline** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Polyline)
+ */
+export type Polyline = google.maps.Polyline
+/**
+ * The options that can be sent into a `Polyline`'s constructor
+ */
+export type IPolylineOptions = google.maps.PolylineOptions
+/**
+ * The options that can be sent into a `Polyline`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type IPolylineOptionsWithId = IPolylineOptions & { id: string }
+/**
+ * The Google **Polygon** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Polygon)
+ */
+export type Polygon = google.maps.Polygon
+/**
+ * The options that can be sent into a `Polygon`'s constructor
+ */
+export type IPolygonOptions = google.maps.PolygonOptions
+/**
+ * The options that can be sent into a `Polygon`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type IPolygonOptionsWithId = IPolygonOptions & { id: string }
+/**
+ * The Google **Rectangle** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Rectangle)
+ */
+export type Rectangle = google.maps.Rectangle
+/**
+ * The options that can be sent into a `Rectangle`'s constructor
+ */
+export type IRectangleOptions = google.maps.RectangleOptions
+/**
+ * The options that can be sent into a `Rectangle`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type IRectangleOptionsWithId = IRectangleOptions & { id: string }
+/**
+ * The Google **Circle** class which extends an `MVCObject`
+ *
+ * **Ref:**: [url](https://developers.google.com/maps/documentation/javascript/reference/polygon#Circle)
+ */
+export type Circle = google.maps.Circle
+/**
+ * The options that can be sent into a `Circle`'s constructor
+ */
+export type ICircleOptions = google.maps.CircleOptions
+/**
+ * The options that can be sent into a `Circle`'s constructor,
+ * _plus_ an identifying `id` for tracking, matching and event mgmt
+ */
+export type ICircleOptionsWithId = ICircleOptions & { id: string }
 
 /**
  * A data point entry for a heatmap. This is a geographical data
@@ -81,6 +141,26 @@ export const markerEvents = [
   'title_changed',
   'visible_changed',
 ]
+
+export const polylineEvents = [
+  'click',
+  'dblclick',
+  'drag',
+  'dragend',
+  'dragstart',
+  'mousedown',
+  'mousemove',
+  'mouseout',
+  'mouseover',
+  'mouseup',
+  'rightclick',
+]
+
+export const polygonEvents = polylineEvents
+
+export const rectangleEvents = polylineEvents.concat(['bounds_changed'])
+
+export const circleEvents = polylineEvents.concat(['center_changed', 'radius_changed'])
 
 export type IMarkerEvent = typeof markerEvents & string
 

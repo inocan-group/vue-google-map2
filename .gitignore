@@ -21,3 +21,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# avoid having dist files in repo; these should only go to NPM
+dist

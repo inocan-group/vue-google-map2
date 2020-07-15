@@ -1,7 +1,7 @@
 {
   "name": "vue-google-map2",
   "version": "0.2.0",
-  "private": true,
+  "license": "MIT",
   "main": "./dist/vue-google-map.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",

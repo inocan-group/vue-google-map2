@@ -16,13 +16,7 @@ import GoogleMapPolygon from './Shapes/GoogleMapPolygon.vue'
 import GoogleMapRectangle from './Shapes/GoogleMapRectangle.vue'
 import { loadNow } from 'connect-google-maps'
 import { DEFAULT_MAP_CONFIG } from './map-defaults'
-import {
-  IMapTypeStyle,
-  IMap,
-  IMapsEventListener,
-  IMapsCoordinate,
-  IMapApi,
-} from './map-types'
+import { IMapTypeStyle, IMap, IMapsEventListener, IMapsCoordinate, IMapApi } from './map-types'
 import { wait, IDictionary } from 'common-types'
 import { coordinatesNotEqual, makeCoordLiteral } from './shared/index'
 import * as theme from './theme'
@@ -71,6 +65,7 @@ export default class GoogleMap extends Vue {
   @Prop() zoomControl?: number
   @Prop() mapTypeControl?: number
   @Prop() rotateControl?: number
+  @Prop() controlSize?: number
   //#endregion
 
   /**
@@ -108,6 +103,7 @@ export default class GoogleMap extends Vue {
   @Watch('rotateControl')
   @Watch('mapTypeControl')
   @Watch('rotateControl')
+  @Watch('controlSize')
   onConfigChanged() {
     this.redraw()
   }
@@ -163,6 +159,7 @@ export default class GoogleMap extends Vue {
     return {
       ...DEFAULT_MAP_CONFIG,
       ...this.mapConfig,
+      ...(this.controlSize ? { controlSize: this.controlSize } : {}),
       ...(this.zoomLevel && this.zoomLevel > 0 ? { zoom: this.zoomLevel } : {}),
       ...this.control('mapTypeControl', 'mapType'),
       ...(this.zoomControl !== 0 ? { scaleControl: false, zoomeControl: false } : {}),

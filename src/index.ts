@@ -5,3 +5,4 @@ export { default as GoogleMapPolyline } from './components/Shapes/GoogleMapPolyl
 export { default as GoogleMapPolygon } from './components/Shapes/GoogleMapPolygon.vue'
 export { default as GoogleMapRectangle } from './components/Shapes/GoogleMapRectangle.vue'
 export { default as GoogleMapCircle } from './components/Shapes/GoogleMapCircle.vue'
+export { default as GoogleMapCustomControl } from './components/customcontrols/GoogleMapCustomControl.vue'

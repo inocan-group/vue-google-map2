@@ -7,7 +7,11 @@ import isEqual from 'lodash.isequal'
 
 @Component
 export default class GoogleMapRectangle extends GoogleMapExtension {
-  @Prop() rectangle!: string | IRectangleOptions
+  @Prop() rectangle!: IRectangleOptions
+  /**
+   * A dictionary containing callbacks to be hooked into the google maps event system. The
+   * name of the property is the event's name.
+  */
   @Prop() callbacks?: IDictionary<(...arg: any[]) => void>
 
   /** the instantiated rectangle class */
@@ -30,17 +34,8 @@ export default class GoogleMapRectangle extends GoogleMapExtension {
       if (!this.rectangle) {
         console.warn(`A GoogleMapRectangle component was instantiated without any rectangle config!`, { context: this })
       }
-      if (typeof this.rectangle === 'string') {
-        try {
-          rectangle = JSON.parse(this.rectangle) as IRectangleOptions
-        } catch (e) {
-          throw new Error(
-            `A GoogleMapRectangle component was passed a "string" value for the rectangle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.rectangle}`,
-          )
-        }
-      } else {
-        rectangle = this.rectangle
-      }
+
+      rectangle = this.rectangle
 
       if (rectangle && !rectangle.bounds) {
         console.info(

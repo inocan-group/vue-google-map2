@@ -7,7 +7,7 @@ import isEqual from 'lodash.isequal'
 
 @Component
 export default class GoogleMapPolyline extends GoogleMapExtension {
-  @Prop() polyline!: string | IPolylineOptions
+  @Prop() polyline!: IPolylineOptions
   @Prop() callbacks?: IDictionary<(...arg: any[]) => void>
 
   /** the instantiated polyline class */
@@ -30,17 +30,8 @@ export default class GoogleMapPolyline extends GoogleMapExtension {
       if (!this.polyline) {
         console.warn(`A GoogleMapPolyline component was instantiated without any polyline config!`, { context: this })
       }
-      if (typeof this.polyline === 'string') {
-        try {
-          polyline = JSON.parse(this.polyline) as IPolylineOptions
-        } catch (e) {
-          throw new Error(
-            `A GoogleMapPolyline component was passed a "string" value for the polyline parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.polyline}`,
-          )
-        }
-      } else {
-        polyline = this.polyline
-      }
+
+      polyline = this.polyline
 
       if (polyline && !polyline.path) {
         console.info(

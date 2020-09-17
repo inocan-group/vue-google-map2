@@ -7,7 +7,7 @@ import isEqual from 'lodash.isequal'
 
 @Component
 export default class GoogleMapPolygon extends GoogleMapExtension {
-  @Prop() polygon!: string | IPolygonOptions
+  @Prop() polygon!: IPolygonOptions
   @Prop() callbacks?: IDictionary<(...arg: any[]) => void>
 
   /** the instantiated polygon class */
@@ -30,17 +30,8 @@ export default class GoogleMapPolygon extends GoogleMapExtension {
       if (!this.polygon) {
         console.warn(`A GoogleMapPolygon component was instantiated without any polygon config!`, { context: this })
       }
-      if (typeof this.polygon === 'string') {
-        try {
-          polygon = JSON.parse(this.polygon) as IPolygonOptions
-        } catch (e) {
-          throw new Error(
-            `A GoogleMapPolygon component was passed a "string" value for the polygon parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.polygon}`,
-          )
-        }
-      } else {
-        polygon = this.polygon
-      }
+
+      polygon = this.polygon
 
       if (polygon && !polygon.paths) {
         console.info(

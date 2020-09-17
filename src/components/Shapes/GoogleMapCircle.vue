@@ -7,7 +7,7 @@ import isEqual from 'lodash.isequal'
 
 @Component
 export default class GoogleMapCircle extends GoogleMapExtension {
-  @Prop() circle!: string | ICircleOptions
+  @Prop() circle!: ICircleOptions
   @Prop() callbacks?: IDictionary<(...arg: any[]) => void>
 
   /** the instantiated circle class */
@@ -30,17 +30,8 @@ export default class GoogleMapCircle extends GoogleMapExtension {
       if (!this.circle) {
         console.warn(`A GoogleMapCircle component was instantiated without any circle config!`, { context: this })
       }
-      if (typeof this.circle === 'string') {
-        try {
-          circle = JSON.parse(this.circle) as ICircleOptions
-        } catch (e) {
-          throw new Error(
-            `A GoogleMapCircle component was passed a "string" value for the circle parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.circle}`,
-          )
-        }
-      } else {
-        circle = this.circle
-      }
+
+      circle = this.circle
 
       if (circle && (!circle.center || !circle.radius)) {
         console.info(

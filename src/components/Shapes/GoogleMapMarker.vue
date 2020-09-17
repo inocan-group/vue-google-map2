@@ -7,7 +7,7 @@ import isEqual from 'lodash.isequal'
 
 @Component
 export default class GoogleMapMarker extends GoogleMapExtension {
-  @Prop() marker!: string | IMarkerOptions
+  @Prop() marker!: IMarkerOptions
   @Prop() callbacks?: IDictionary<(...arg: any[]) => void>
 
   /** the instantiated marker class */
@@ -30,17 +30,8 @@ export default class GoogleMapMarker extends GoogleMapExtension {
       if (!this.marker) {
         console.warn(`A GoogleMapMarker component was instantiated without any marker config!`, { context: this })
       }
-      if (typeof this.marker === 'string') {
-        try {
-          marker = JSON.parse(this.marker) as IMarkerOptions
-        } catch (e) {
-          throw new Error(
-            `A GoogleMapMarker component was passed a "string" value for the marker parameter. This is ok if it can be parsed by JSON but attempts to do this failed with the message: ${e.message}. The string value prior to parsing was: ${this.marker}`,
-          )
-        }
-      } else {
-        marker = this.marker
-      }
+
+      marker = this.marker
 
       if (marker && !marker.position) {
         console.info(
